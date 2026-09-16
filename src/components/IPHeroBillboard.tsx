@@ -1,74 +1,91 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { IPItem } from "./IPContentRail";
 
 interface IPHeroBillboardProps {
-  featuredIp: IPItem;
+  items?: IPItem[];
+  featuredIp?: IPItem;
   onPlayTrailer: (ip: IPItem) => void;
+  autoPlayIntervalMs?: number;
 }
 
-export default function IPHeroBillboard({ featuredIp, onPlayTrailer }: IPHeroBillboardProps) {
+export default function IPHeroBillboard({
+  items,
+  featuredIp,
+  onPlayTrailer,
+  autoPlayIntervalMs = 5000,
+}: IPHeroBillboardProps) {
+  const ipArray = items && items.length > 0 ? items : featuredIp ? [featuredIp] : [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-play timer effect (continuous rotation)
+  useEffect(() => {
+    if (ipArray.length <= 1) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % ipArray.length);
+    }, autoPlayIntervalMs);
+
+    return () => clearInterval(timer);
+  }, [ipArray.length, autoPlayIntervalMs]);
+
+  if (ipArray.length === 0) return null;
+
+  const currentIp = ipArray[currentIndex];
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % ipArray.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + ipArray.length) % ipArray.length);
+  };
+
   return (
-    <section className="relative w-full min-h-[90vh] flex items-end pb-16 pt-44 sm:pt-52 lg:pt-60 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10">
-      {/* Background Image / Ambient Backdrop */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full min-h-[85vh] flex items-end pb-12 sm:pb-16 pt-36 sm:pt-40 lg:pt-44 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10 group">
+      {/* Background Image / Ambient Backdrop with key for smooth fade */}
+      <div key={currentIp.id} className="absolute inset-0 z-0 transition-opacity duration-700">
         <img
-          src={featuredIp.backdrop}
-          alt={featuredIp.title}
+          src={currentIp.backdrop}
+          alt={currentIp.title}
           className="w-full h-full object-cover filter contrast-110 saturate-125 scale-105 animate-hero-fade"
         />
         
-        {/* Netflix-Style Gradients */}
-        {/* Top Dark Overlay for Navigation Bar visibility */}
+        {/* Cinematic Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black pointer-events-none" />
-        {/* Left Heavy Shadow Gradient for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent w-full md:w-3/4 pointer-events-none" />
-        {/* Radial Dark Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
       </div>
 
       {/* Hero Content Overlay */}
-      <div className="relative z-10 max-w-4xl space-y-6 animate-hero-fade pt-12 md:pt-20">
-        {/* Netflix Top Spotlight Tag */}
+      <div key={`content-${currentIp.id}`} className="relative z-10 max-w-4xl space-y-5 sm:space-y-6 animate-hero-fade pt-4 sm:pt-8 w-full">
+        {/* Studio Spotlight Tag */}
         <div className="flex flex-wrap items-center gap-3">
           <span className="px-3 py-1 rounded-md bg-yellow-400 text-black text-xs font-extrabold tracking-widest uppercase shadow-lg">
             SPOTLIGHT IP
           </span>
           <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white">
-            {featuredIp.badgeStatus}
+            {currentIp.badgeStatus}
           </span>
           <span className="text-xs font-mono text-yellow-400 font-bold">★ #1 IN AFRICAN ANIMATION</span>
         </div>
 
         {/* Title */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none text-white drop-shadow-2xl">
-          {featuredIp.title}
+          {currentIp.title}
         </h1>
 
-        {/* Metadata Line */}
-        <div className="flex items-center gap-4 text-xs font-medium text-white/80 font-mono">
-          <span className="text-emerald-400 font-bold">98% Match</span>
-          <span>{featuredIp.releaseYear}</span>
-          <span className="px-1.5 py-0.5 border border-white/30 rounded text-[10px]">
-            {featuredIp.maturityRating}
-          </span>
-          <span>{featuredIp.duration}</span>
-          <span className="px-2 py-0.5 rounded bg-white/10 border border-white/15 text-[10px]">
-            4K Ultra HD
-          </span>
-        </div>
-
         {/* Logline */}
-        <p className="text-lg sm:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md">
-          {featuredIp.logline}
+        <p className="text-lg sm:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md line-clamp-3">
+          {currentIp.logline}
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-4 pt-2">
-          {/* Main Play Button */}
           <button
-            onClick={() => onPlayTrailer(featuredIp)}
-            className="flex items-center gap-3 px-8 py-3.5 rounded-full bg-white text-black font-extrabold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all duration-300 shadow-2xl hover:scale-105 group"
+            onClick={() => onPlayTrailer(currentIp)}
+            className="flex items-center gap-3 px-8 py-3.5 rounded-full bg-white text-black font-extrabold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all duration-300 shadow-2xl hover:scale-105 group/btn"
           >
             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
@@ -76,9 +93,8 @@ export default function IPHeroBillboard({ featuredIp, onPlayTrailer }: IPHeroBil
             <span>Watch Trailer</span>
           </button>
 
-          {/* More Info Button */}
           <button
-            onClick={() => onPlayTrailer(featuredIp)}
+            onClick={() => onPlayTrailer(currentIp)}
             className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 hover:border-white text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/30 transition-all duration-300"
           >
             <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,6 +104,77 @@ export default function IPHeroBillboard({ featuredIp, onPlayTrailer }: IPHeroBil
           </button>
         </div>
       </div>
+
+      {/* Integrated Thumbnail Carousel Dock - Anchored to the Right */}
+      {ipArray.length > 1 && (
+        <div className="relative md:absolute md:right-6 lg:right-12 md:bottom-12 lg:bottom-16 z-20 mt-6 md:mt-0 flex items-center gap-2 bg-black/70 backdrop-blur-md border border-white/15 p-2 rounded-2xl shadow-2xl shrink-0 self-end">
+          {/* Previous Button */}
+          <button
+            onClick={handlePrev}
+            className="p-2 rounded-xl bg-white/5 hover:bg-white/20 text-white/80 hover:text-white transition-all duration-200"
+            aria-label="Previous IP"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Thumbnail Cards with Active Progress Line */}
+          <div className="flex items-center gap-2">
+            {ipArray.map((ip, idx) => {
+              const isActive = idx === currentIndex;
+              return (
+                <button
+                  key={ip.id}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`group relative w-20 sm:w-24 h-12 sm:h-14 rounded-xl overflow-hidden border transition-all duration-300 ${
+                    isActive
+                      ? "border-yellow-400 ring-2 ring-yellow-400/40 shadow-lg scale-105"
+                      : "border-white/20 opacity-50 hover:opacity-100 hover:border-white/50"
+                  }`}
+                  aria-label={`Switch to ${ip.title}`}
+                >
+                  <img src={ip.thumbnail} alt={ip.title} className="w-full h-full object-cover" />
+                  <div
+                    className={`absolute inset-0 transition-colors ${
+                      isActive ? "bg-black/10" : "bg-black/50 group-hover:bg-black/20"
+                    }`}
+                  />
+                  
+                  {/* IP Title on image */}
+                  <span className="absolute bottom-1 left-1.5 right-1.5 text-[9px] font-bold truncate text-white drop-shadow-md text-left">
+                    {ip.title}
+                  </span>
+
+                  {/* Animated Progress Bar at bottom of active thumbnail image */}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden">
+                      <div
+                        key={`prog-${currentIndex}`}
+                        className="h-full bg-yellow-400"
+                        style={{
+                          animation: `growProgress ${autoPlayIntervalMs}ms linear forwards`,
+                        }}
+                      />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={handleNext}
+            className="p-2 rounded-xl bg-white/5 hover:bg-white/20 text-white/80 hover:text-white transition-all duration-200"
+            aria-label="Next IP"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      )}
     </section>
   );
 }

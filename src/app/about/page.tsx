@@ -7,7 +7,6 @@ import AboutStoryTimeline from "@/components/AboutStoryTimeline";
 import AboutValues from "@/components/AboutValues";
 import AboutSection from "@/components/AboutSection";
 import AboutTeam from "@/components/AboutTeam";
-import AboutAwards from "@/components/AboutAwards";
 import ContactModal from "@/components/ContactModal";
 import Footer from "@/components/Footer";
 
@@ -33,9 +32,6 @@ export default function AboutPage() {
 
       {/* Creative Leadership & Artistry Team */}
       <AboutTeam />
-
-      {/* Awards & Prestige Industry Recognition */}
-      <AboutAwards />
 
       {/* Footer & CTA */}
       <Footer onOpenContact={() => setContactOpen(true)} />

@@ -7,7 +7,7 @@ export default function AboutSection() {
 
   const hubs = [
     { city: "Lagos HQ", country: "Nigeria", address: "Plot 18, Nike Art Gallery Road, Ikate, Lekki, Lagos", focus: "Animation Studio & IP Production" },
-    { city: "Global Partners", country: "Streaming", address: "Disney, Netflix, Cartoon Network & DreamWorks", focus: "Co-Production & International Broadcast" },
+    { city: "Global Partners", country: "Broadcast", address: "Cartoon Network, UNDP & International Networks", focus: "Co-Production & International Broadcast" },
     { city: "Commercial & Brands", country: "Global", address: "Corporate, Commercial & Entertainment Brands", focus: "Explainer Videos & Motion Graphics" },
     { city: "MagicLab Academy", country: "Education", address: "MagicLab Animation & Creative Training", focus: "Talent Incubator & Skill Development" },
   ];

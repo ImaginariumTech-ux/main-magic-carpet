@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -18,72 +19,65 @@ export default function Hero({ onOpenContact }: HeroProps) {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <iframe
           src={embedUrl}
-          title="Studio Hero Background Video"
+          title="Magic Carpet Studio Hero Background Video"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] min-w-full min-h-full object-cover scale-[1.25] pointer-events-none brightness-[0.70] contrast-[1.05]"
         />
         {/* Subtle Dark Gradient Overlay for optimal legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.75)_100%)] pointer-events-none" />
       </div>
 
       {/* Main Hero Overlay Content */}
-      <div className="relative z-20 px-4 sm:px-6 lg:px-10 pb-8 sm:pb-12 lg:pb-14 max-w-7xl w-full mx-auto">
+      <div className="relative z-20 px-4 sm:px-6 lg:px-10 pb-10 sm:pb-14 lg:pb-16 max-w-7xl w-full mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
-          {/* Left Column: Typography */}
-          <div className="max-w-[700px] space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs text-white/90 font-medium tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>The Mill • Official Showreel</span>
+          {/* Left Column: Header & Copy */}
+          <div className="max-w-[760px] space-y-4">
+            {/* Spotlight Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs text-white/90 font-medium tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+              <span className="uppercase tracking-wider">Magic Carpet Studios • Official Showcase</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.08] tracking-tight">
-              {activeTab === "brand" ? (
-                <>
-                  Creative craft,{" "}
-                  <em className="font-serif-accent font-normal text-white/80 not-italic italic">
-                    designed to scale.
-                  </em>
-                </>
-              ) : (
-                <>
-                  World-class storytelling,{" "}
-                  <em className="font-serif-accent font-normal text-white/80 not-italic italic">
-                    beyond the screen.
-                  </em>
-                </>
-              )}
+            {/* Header Text */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.08] tracking-tight text-white drop-shadow-2xl">
+              High-quality animation.{" "}
+              <em className="font-serif-accent font-normal text-yellow-400 not-italic italic">
+                From idea to screen.
+              </em>
             </h1>
 
-            <p className="text-sm sm:text-base text-white/70 max-w-xl leading-relaxed pt-1">
-              Delivering high-end visual effects, CGI creatures, integrated production, and virtual production across London, Paris, Seoul & Liège.
+            {/* Body Text */}
+            <p className="text-base sm:text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed pt-1 font-light drop-shadow-md">
+              From concept and character design to 2D, 3D, and full animation production, Magic Carpet Studios works with brands, agencies, studios, and organisations to create standout visual stories.
             </p>
           </div>
 
-          {/* Right Column: Interactive Glassmorphism Pill Toggles */}
-          <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-stretch gap-3 shrink-0">
+          {/* Right Column: CTA Buttons */}
+          <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-stretch gap-3.5 shrink-0">
             <button
-              onClick={() => setActiveTab("brand")}
-              className={`flex items-center justify-between gap-4 rounded-full border px-6 py-3.5 text-base md:text-lg transition-all duration-300 whitespace-nowrap backdrop-blur-xl ${
-                activeTab === "brand"
-                  ? "border-white bg-white text-black font-medium shadow-lg shadow-white/10"
-                  : "border-white/20 bg-white/10 text-white/80 hover:border-white/50 hover:bg-white/20 hover:text-white"
-              }`}
+              onClick={onOpenContact}
+              className="flex items-center justify-between gap-6 rounded-full bg-white text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:bg-yellow-400 hover:scale-105"
             >
-              <span>Brand & Content</span>
-              <span className="text-xs opacity-60">01</span>
+              <span>Start a Project</span>
+              <span className="text-xs">→</span>
             </button>
 
-            <button
-              onClick={() => setActiveTab("film")}
-              className={`flex items-center justify-between gap-4 rounded-full border px-6 py-3.5 text-base md:text-lg transition-all duration-300 whitespace-nowrap backdrop-blur-xl ${
-                activeTab === "film"
-                  ? "border-white bg-white text-black font-medium shadow-lg shadow-white/10"
-                  : "border-white/20 bg-white/10 text-white/80 hover:border-white/50 hover:bg-white/20 hover:text-white"
-              }`}
+            <Link
+              href="/projects"
+              className="flex items-center justify-between gap-6 rounded-full border border-white/30 bg-white/10 backdrop-blur-xl text-white hover:border-white hover:bg-white/20 font-semibold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300"
             >
-              <span>Film & Series</span>
-              <span className="text-xs opacity-60">02</span>
-            </button>
+              <span>Explore Our IPs</span>
+              <span className="text-xs text-white/60">01</span>
+            </Link>
+
+            <Link
+              href="/partners"
+              className="flex items-center justify-between gap-6 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white/80 hover:border-white hover:bg-white/15 hover:text-white font-semibold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300"
+            >
+              <span>Clients & Partners</span>
+              <span className="text-xs text-white/60">02</span>
+            </Link>
           </div>
         </div>
       </div>

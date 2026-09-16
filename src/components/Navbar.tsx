@@ -143,7 +143,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                   Our IPs
                 </Link>
                 <Link
-                  href="/about#awards"
+                  href="/partners"
                   onClick={() => setWorksOpen(false)}
                   className="block text-base font-bold text-white hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5"
                 >
@@ -317,7 +317,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 Our IPs
               </Link>
               <Link
-                href="/about#awards"
+                href="/partners"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
               >

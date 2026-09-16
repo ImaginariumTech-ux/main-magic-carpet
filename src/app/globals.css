@@ -69,3 +69,14 @@ body {
 .animate-hero-fade {
   animation: heroFadeIn 0.6s ease-out forwards;
 }
+
+/* Hero Carousel Thumbnail Progress Bar animation */
+@keyframes growProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+

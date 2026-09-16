@@ -44,7 +44,7 @@ export default function IPContentRail({ title, subtitle, items, onSelectIp }: IP
         {subtitle && <p className="text-xs text-white/50 font-mono">{subtitle}</p>}
       </div>
 
-      {/* Netflix-Style Grid / Rail */}
+      {/* Cinematic Catalogue Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {items.map((ip) => {
           const isHovered = hoveredId === ip.id;

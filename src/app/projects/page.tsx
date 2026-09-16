@@ -71,25 +71,17 @@ export default function ProjectsPage() {
       {/* Navigation Header */}
       <Navbar onOpenContact={() => setContactOpen(true)} />
 
-      {/* Netflix Billboard Spotlight Banner */}
+      {/* Hero Spotlight Banner Carousel */}
       <IPHeroBillboard
-        featuredIp={ipList[0]}
+        items={ipList}
         onPlayTrailer={(ip) => setSelectedIp(ip)}
       />
 
-      {/* Main Netflix Content Rail */}
+      {/* Main Catalogue Content Rail */}
       <IPContentRail
         title="Featured Original IPs"
         subtitle="Explore official trailers for Magic Carpet's original animated movies and series"
         items={ipList}
-        onSelectIp={(ip) => setSelectedIp(ip)}
-      />
-
-      {/* Secondary Rail: Feature Films & Mythic Stories */}
-      <IPContentRail
-        title="Mythic Stories & Cinematic Legends"
-        subtitle="Crafted for global broadcast and international streaming platforms"
-        items={[ipList[1], ipList[0], ipList[2]]}
         onSelectIp={(ip) => setSelectedIp(ip)}
       />
 

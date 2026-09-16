@@ -53,12 +53,12 @@ export default function AboutStoryTimeline() {
     },
     {
       year: "2024",
-      title: "Feature-Length Slate & Streaming Production",
-      subtitle: "Disney, Netflix & DreamWorks Collaborations",
-      description: "Expanded pipeline to produce feature-length animated stories and episodic series alongside leading global streaming giants and international animation hubs.",
+      title: "Feature-Length Slate & Global Distribution",
+      subtitle: "International Alliances & Co-Productions",
+      description: "Expanded pipeline to produce feature-length animated stories and episodic series alongside leading broadcast networks and international animation hubs.",
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1280&auto=format&fit=crop",
       highlights: [
-        "Collaborating with Netflix, Disney, and Cartoon Network",
+        "Collaborating with Cartoon Network & UNDP",
         "Established MagicLab Academy for animator training",
         "Built state-of-the-art Lekki, Lagos studio complex",
       ],

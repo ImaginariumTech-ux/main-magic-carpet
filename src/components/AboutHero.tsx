@@ -6,7 +6,7 @@ interface AboutHeroProps {
 
 export default function AboutHero({ onOpenContact }: AboutHeroProps) {
   const stats = [
-    { label: "Global Streaming Partners", value: "Disney+", unit: "Netflix & Cartoon Network" },
+    { label: "Global Broadcast Partners", value: "AAN", unit: "Cartoon Network & UNDP" },
     { label: "Original IPs & Series", value: "15+", unit: "In Production" },
     { label: "Studio Heritage", value: "Africa", unit: "Lagos Studio HQ" },
     { label: "Global Audience", value: "50M+", unit: "Viewers Reached" },

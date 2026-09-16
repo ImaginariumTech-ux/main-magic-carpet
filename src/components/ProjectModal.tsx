@@ -49,13 +49,23 @@ export default function ProjectModal({ project, onClose, onOpenContact }: Projec
 
         {/* Video Player */}
         <div className="relative aspect-video bg-black w-full overflow-hidden">
-          <video
-            src={project.video}
-            controls
-            autoPlay
-            poster={project.poster}
-            className="w-full h-full object-cover"
-          />
+          {project.youtubeId ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+              title={project.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          ) : (
+            <video
+              src={project.video}
+              controls
+              autoPlay
+              poster={project.poster}
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
 
         {/* Project Information Body */}

@@ -7,8 +7,10 @@ export interface Project {
   title: string;
   client?: string;
   category: string;
+  type: "ip" | "partner";
   poster: string;
   video: string;
+  youtubeId?: string;
   span: "col-span-1" | "col-span-2";
   aspect: "aspect-[3/2]" | "aspect-square";
   description: string;
@@ -20,145 +22,179 @@ interface FeaturedWorkProps {
 }
 
 export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
+  const [activeFilter, setActiveFilter] = useState<"all" | "ip" | "partner">("all");
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const projects: Project[] = [
     {
-      id: "brand-reel",
-      title: "The Mill Brand Reel 2026",
-      client: "The Mill Global",
-      category: "Studio Showreel",
-      poster: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1280&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-face-animation-41484-large.mp4",
+      id: "mallam-illia",
+      type: "ip",
+      title: "The Passport of Mallam Illia",
+      client: "Magic Carpet Original • Feature Film",
+      category: "Original Feature Film",
+      poster: "https://img.youtube.com/vi/wePT7aKdgPM/maxresdefault.jpg",
+      youtubeId: "wePT7aKdgPM",
+      video: "https://www.youtube.com/watch?v=wePT7aKdgPM",
       span: "col-span-2",
       aspect: "aspect-[3/2]",
-      description: "Our flagship compilation of visual effects, virtual production, and groundbreaking creative storytelling from studios across London, Paris, Seoul, and Liège.",
-      credits: ["Executive Producer: Alex Vance", "VFX Supervisor: Marcus Wright", "Colorist: Elena Rostova"],
+      description: "Based on Cyprian Ekwensi's renowned classic novel, following an elderly warrior recounting a lifelong tale of fiery passion, deadly duels, betrayal, and revenge in pre-independence northern Nigeria.",
+      credits: ["Director: Ferdinand Adimefe", "Studio: Magic Carpet Studios", "Format: 2D/3D Animated Feature"],
     },
     {
-      id: "luxury-fashion",
-      title: "Luxury & Fashion Reel 2026",
-      client: "Haute Couture Collection",
-      category: "Fashion & Beauty",
-      poster: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
+      id: "african-animation-network",
+      type: "partner",
+      title: "African Animation Network (AAN)",
+      client: "AAN Alliance",
+      category: "Continental Animation Alliance",
+      poster: "https://img.youtube.com/vi/wePT7aKdgPM/sddefault.jpg",
+      youtubeId: "wePT7aKdgPM",
+      video: "https://www.youtube.com/watch?v=wePT7aKdgPM",
       span: "col-span-1",
       aspect: "aspect-square",
-      description: "High-end digital beauty retouching, photorealistic garment simulations, and surreal lighting design for global luxury fashion houses.",
-      credits: ["Creative Director: Jean-Luc Dupont", "Lead Compositor: Sophia Chen"],
+      description: "Co-producing and distributing original African animation slates across international film festivals and regional broadcast networks.",
+      credits: ["Alliance: African Animation Network", "Focus: Regional Co-Production", "Distribution: Festival Circuit"],
     },
     {
-      id: "film-series",
-      title: "Film & Series Reel 2026",
-      client: "Global Streaming Studios",
-      category: "Episodic & Feature Film",
-      poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-cinematic-view-of-a-futuristic-city-41482-large.mp4",
+      id: "legends-of-bulan",
+      type: "ip",
+      title: "Legends of Bulan",
+      client: "Magic Carpet Original • Series",
+      category: "Original Fantasy Series",
+      poster: "https://img.youtube.com/vi/15Zfj4qgLB0/maxresdefault.jpg",
+      youtubeId: "15Zfj4qgLB0",
+      video: "https://www.youtube.com/watch?v=15Zfj4qgLB0",
       span: "col-span-1",
       aspect: "aspect-square",
-      description: "High-complexity CG creature effects, digital doubles, and immersive environment extensions for major theatrical releases.",
-      credits: ["VFX Director: David Miller", "CG Supervisor: Sarah Jenkins"],
+      description: "Immersing viewers into a breathtaking fantasy universe where ancient African gods, mythical beasts, and young heroes clash to protect the moonlit realms.",
+      credits: ["Director: Chekwube Okonkwo", "Studio: Magic Carpet Studios", "Format: Animated Series Slate"],
     },
     {
-      id: "brand-content",
-      title: "Brand & Content Reel 2026",
-      client: "Integrated Production",
-      category: "Commercial & Content",
-      poster: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1280&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-41530-large.mp4",
+      id: "cartoon-network",
+      type: "partner",
+      title: "Cartoon Network Partnership",
+      client: "Cartoon Network",
+      category: "Broadcast Animation",
+      poster: "https://img.youtube.com/vi/15Zfj4qgLB0/sddefault.jpg",
+      youtubeId: "15Zfj4qgLB0",
+      video: "https://www.youtube.com/watch?v=15Zfj4qgLB0",
       span: "col-span-2",
       aspect: "aspect-[3/2]",
-      description: "Integrated multi-platform campaigns blending real-time LED volume shooting with generative CG environments.",
-      credits: ["Director: Antoine Laurent", "Lead Animator: Kenji Sato"],
+      description: "Crafting high-octane 2D and 3D animated content, short series, and character-driven stories that entertain and inspire young audiences globally.",
+      credits: ["Client: Cartoon Network", "Focus: Shorts & Animated Campaigns", "Format: 2D/3D Broadcast"],
     },
     {
-      id: "environment-reel",
-      title: "Environment & World Building Reel",
-      client: "The Mill VFX Studio",
-      category: "CGI Environments",
-      poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1280&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-tunnel-of-futuristic-lights-41528-large.mp4",
+      id: "sip",
+      type: "ip",
+      title: "Sip",
+      client: "Magic Carpet Original • Short Film",
+      category: "Award-Winning Short Film",
+      poster: "https://img.youtube.com/vi/IJmiDCY_tAE/maxresdefault.jpg",
+      youtubeId: "IJmiDCY_tAE",
+      video: "https://www.youtube.com/watch?v=IJmiDCY_tAE",
+      span: "col-span-1",
+      aspect: "aspect-square",
+      description: "A critically acclaimed animated short film blending surrealistic 2D art with emotional storytelling, capturing an intimate journey through temptation and redemption.",
+      credits: ["Director: Ferdinand Adimefe", "Awards: Multi-Festival Laureate", "Format: 2D Surreal Art Short"],
+    },
+    {
+      id: "undp",
+      type: "partner",
+      title: "United Nations Development Programme",
+      client: "UNDP",
+      category: "Social Impact & Motion Graphics",
+      poster: "https://img.youtube.com/vi/IJmiDCY_tAE/sddefault.jpg",
+      youtubeId: "IJmiDCY_tAE",
+      video: "https://www.youtube.com/watch?v=IJmiDCY_tAE",
       span: "col-span-2",
       aspect: "aspect-[3/2]",
-      description: "Photorealistic 3D matte painting, volumetric atmospheric simulations, and procedural cityscapes for cinema.",
-      credits: ["Environment Lead: Carlos Mendez", "FX Lead: Maya Lin"],
+      description: "Creating powerful visual campaigns, animated documentaries, and motion graphics driving social change, environmental sustainability, and education.",
+      credits: ["Partner: UNDP", "Focus: Sustainability & Cultural Awareness", "Format: Motion Graphics & Doc Series"],
     },
     {
-      id: "troll-2",
-      title: "Troll 2",
-      client: "Motion Picture Release",
-      category: "Creature VFX",
-      poster: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-glowing-crystal-ball-41527-large.mp4",
+      id: "british-council",
+      type: "partner",
+      title: "British Council & Creative Alliances",
+      client: "British Council",
+      category: "Cultural Arts Exchange",
+      poster: "https://img.youtube.com/vi/IJmiDCY_tAE/sddefault.jpg",
+      youtubeId: "IJmiDCY_tAE",
+      video: "https://www.youtube.com/watch?v=IJmiDCY_tAE",
       span: "col-span-1",
       aspect: "aspect-square",
-      description: "Full creature pipeline execution involving muscle dynamics, groom simulations, and intricate environmental destruction.",
-      credits: ["Creature Supervisor: Henrik Lindqvist", "Lighter: Oliver Thorne"],
-    },
-    {
-      id: "louis-vuitton",
-      title: "Louis Vuitton '130th Anniversary'",
-      client: "Louis Vuitton",
-      category: "Luxury Campaign",
-      poster: "https://images.unsplash.com/photo-1549439602-43ebca2327af?q=80&w=800&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-liquid-gold-swirling-background-41480-large.mp4",
-      span: "col-span-1",
-      aspect: "aspect-square",
-      description: "A surreal heritage campaign depicting iconic monogram trunks transforming into liquid gold kinetic sculptures.",
-      credits: ["Creative Director: Camille Vane", "Design Lead: Lucas Moreau"],
-    },
-    {
-      id: "ralph-lauren",
-      title: "Ralph Lauren 'Wimbledon'",
-      client: "Ralph Lauren",
-      category: "Sports & Elegance",
-      poster: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1280&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-animation-of-futuristic-circuit-lines-41529-large.mp4",
-      span: "col-span-2",
-      aspect: "aspect-[3/2]",
-      description: "Dynamic fluid cloth physics and motion-tracked digital stadium extensions capturing the essence of English tennis tradition.",
-      credits: ["VFX Director: James Sterling", "Producer: Chloe Bennet"],
-    },
-    {
-      id: "alpine-a390",
-      title: "Alpine 'A390'",
-      client: "Alpine Motors",
-      category: "Automotive CGI",
-      poster: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop",
-      video: "https://assets.mixkit.co/videos/preview/mixkit-car-driving-through-a-futuristic-tunnel-41483-large.mp4",
-      span: "col-span-1",
-      aspect: "aspect-square",
-      description: "Full CAD vehicle visualization with ray-traced reflections, high-speed camera tracking, and custom lighting rigs.",
-      credits: ["Automotive Lead: Pierre Dubois", "Compositor: Leo Rossi"],
+      description: "Collaborating on creative economy projects, digital arts initiatives, and cultural heritage preservation through high-end digital animation.",
+      credits: ["Grant Partner: British Council", "Focus: Cultural Heritage & Oral Traditions", "Format: Digital Shorts"],
     },
   ];
 
+  const filteredProjects = projects.filter((project) => {
+    if (activeFilter === "ip") return project.type === "ip";
+    if (activeFilter === "partner") return project.type === "partner";
+    return true;
+  });
+
   return (
     <section id="featured-work" className="py-20 md:py-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      {/* Portfolio Header & Category Filters */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
         <div>
-          <div className="text-xs uppercase tracking-widest text-white/50 font-semibold mb-2">Portfolio</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light">Featured work</h2>
+          <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+            <span>Studio Portfolio & Showcase</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light">Featured Work & Alliances</h2>
         </div>
-        <div className="text-sm text-white/60">
-          Showing <span className="text-white font-medium">{projects.length} curated projects</span> across VFX, CGI & Film
+
+        {/* Interactive Filter Pills */}
+        <div className="flex items-center gap-2 bg-white/5 border border-white/10 p-1.5 rounded-full backdrop-blur-md">
+          <button
+            onClick={() => setActiveFilter("all")}
+            className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
+              activeFilter === "all"
+                ? "bg-yellow-400 text-black shadow-lg"
+                : "text-white/70 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            All Portfolio ({projects.length})
+          </button>
+
+          <button
+            onClick={() => setActiveFilter("ip")}
+            className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
+              activeFilter === "ip"
+                ? "bg-yellow-400 text-black shadow-lg"
+                : "text-white/70 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            Original IPs ({projects.filter((p) => p.type === "ip").length})
+          </button>
+
+          <button
+            onClick={() => setActiveFilter("partner")}
+            className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
+              activeFilter === "partner"
+                ? "bg-yellow-400 text-black shadow-lg"
+                : "text-white/70 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            Clients & Partners ({projects.filter((p) => p.type === "partner").length})
+          </button>
         </div>
       </div>
 
       {/* Asymmetric Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {projects.map((project) => {
+        {filteredProjects.map((project) => {
           const isHovered = hoveredId === project.id;
           return (
             <div
               key={project.id}
-              className={`${project.span} group cursor-pointer`}
+              className={`${project.span} group cursor-pointer animate-hero-fade`}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => onSelectProject(project)}
             >
               <div
-                className={`relative w-full ${project.aspect} bg-neutral-900 rounded-xl overflow-hidden mb-3 border border-white/10`}
+                className={`relative w-full ${project.aspect} bg-neutral-900 rounded-2xl overflow-hidden mb-3 border border-white/10 group-hover:border-yellow-400/40 transition-all duration-300 shadow-xl`}
               >
                 {/* Static Image Poster */}
                 <img
@@ -167,23 +203,19 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   className="h-full w-full object-cover scale-[1.01] transition-transform duration-500 ease-out group-hover:scale-105"
                 />
 
-                {/* Seamless Video Hover Overlay */}
-                <video
-                  src={project.video}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay={isHovered}
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-                    isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
-                  }`}
-                />
+                {/* Dark Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                 {/* Badge Overlay */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs text-white/90 font-medium">
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[11px] text-white font-medium uppercase tracking-wider">
                     {project.category}
                   </span>
+                  {project.type === "ip" && (
+                    <span className="px-2.5 py-0.5 rounded-full bg-yellow-400 text-black text-[10px] font-extrabold uppercase tracking-widest">
+                      IP
+                    </span>
+                  )}
                 </div>
 
                 {/* Hover Play Button Trigger */}
@@ -203,12 +235,12 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
               {/* Title & Metadata */}
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-medium text-lg text-white group-hover:text-white/80 transition-colors">
+                  <h3 className="font-medium text-lg text-white group-hover:text-yellow-300 transition-colors">
                     {project.title}
                   </h3>
-                  {project.client && <p className="text-sm text-white/50">{project.client}</p>}
+                  {project.client && <p className="text-sm text-white/50 font-mono">{project.client}</p>}
                 </div>
-                <span className="text-white/40 group-hover:text-white transition-colors text-sm">↗</span>
+                <span className="text-white/40 group-hover:text-yellow-400 transition-colors text-sm">↗</span>
               </div>
             </div>
           );
