@@ -9,7 +9,7 @@ interface IPHeroBillboardProps {
 
 export default function IPHeroBillboard({ featuredIp, onPlayTrailer }: IPHeroBillboardProps) {
   return (
-    <section className="relative w-full min-h-[85vh] flex items-end pb-16 pt-32 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10">
+    <section className="relative w-full min-h-[90vh] flex items-end pb-16 pt-44 sm:pt-52 lg:pt-60 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10">
       {/* Background Image / Ambient Backdrop */}
       <div className="absolute inset-0 z-0">
         <img
@@ -28,7 +28,7 @@ export default function IPHeroBillboard({ featuredIp, onPlayTrailer }: IPHeroBil
       </div>
 
       {/* Hero Content Overlay */}
-      <div className="relative z-10 max-w-4xl space-y-6 animate-hero-fade">
+      <div className="relative z-10 max-w-4xl space-y-6 animate-hero-fade pt-12 md:pt-20">
         {/* Netflix Top Spotlight Tag */}
         <div className="flex flex-wrap items-center gap-3">
           <span className="px-3 py-1 rounded-md bg-yellow-400 text-black text-xs font-extrabold tracking-widest uppercase shadow-lg">
