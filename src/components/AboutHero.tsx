@@ -54,6 +54,9 @@ export default function AboutHero({ onOpenContact }: AboutHeroProps) {
         {/* Call to Actions */}
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
           <button
+            data-cal-namespace="30min"
+            data-cal-link="magic-carpet-ywfdx8/30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             onClick={onOpenContact}
             className="px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-white/90 transition-all duration-300 shadow-2xl hover:scale-105"
           >

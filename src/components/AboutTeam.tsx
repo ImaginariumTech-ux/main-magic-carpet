@@ -6,7 +6,7 @@ interface TeamMember {
   id: string;
   name: string;
   role: string;
-  department: "Leadership" | "Animation & IP" | "Commercial & Brand" | "MagicLab Academy";
+  department: "Leadership" | "Animation & IP";
   image: string;
   quote: string;
   specialty: string;
@@ -17,58 +17,31 @@ export default function AboutTeam() {
 
   const team: TeamMember[] = [
     {
-      id: "executive-director",
-      name: "Ferdinand Adimefe",
+      id: "ferdy-adimefe",
+      name: "Ferdy Adimefe",
       role: "Founder & Chief Executive Officer",
       department: "Leadership",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+      image: "/WhatsApp-Image-2024-09-23-at-14.34.25_778bc483-1024x830.jpg",
       quote: "Storytelling is the carpet on which cultures fly across borders, connecting humanity through shared wonder.",
       specialty: "Creative Vision, Executive Producing & IP Strategy",
     },
     {
-      id: "head-of-animation",
+      id: "chekwube-okonkwo",
       name: "Chekwube Okonkwo",
       role: "Head of Animation & Art Director",
       department: "Animation & IP",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+      image: "/checksss.jpg",
       quote: "Every frame we animate carries the rhythm, color, and soul of authentic African art.",
       specialty: "2D/3D Character Rigging & Visual Art Direction",
     },
     {
-      id: "lead-story-writer",
-      name: "Amara Nwachukwu",
-      role: "Lead Narrative Designer & Story Editor",
-      department: "Animation & IP",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
-      quote: "African folklore is an infinite reservoir of magic waiting to inspire global audiences.",
-      specialty: "Screenwriting, World-Building & Character Development",
-    },
-    {
-      id: "brand-creative-lead",
-      name: "Tunde Bakare",
-      role: "Director of Motion Graphics & Brand Content",
-      department: "Commercial & Brand",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
-      quote: "We transform corporate messaging into mesmerizing motion art that commands attention.",
-      specialty: "Explainer Videos, 3D Product Visuals & Motion Graphics",
-    },
-    {
-      id: "magiclab-director",
-      name: "Blessing Egwu",
-      role: "Director of MagicLab Academy",
-      department: "MagicLab Academy",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-      quote: "Nurturing young African talent ensures the future of global animation is diverse and unstoppable.",
-      specialty: "Talent Incubator, Pipeline Mentorship & Skill Building",
-    },
-    {
-      id: "pipeline-technical-lead",
-      name: "Kofi Mensah",
-      role: "Senior Pipeline Engineer & Technical Director",
+      id: "duru-azubuike",
+      name: "Duru Azubuike",
+      role: "Executive Producer & Operations Lead",
       department: "Leadership",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
-      quote: "Robust render farm topology and cloud pipelines empower our artists to create without limits.",
-      specialty: "3D Pipeline Architecture & Real-Time Engine Integration",
+      image: "/durururu.jpg",
+      quote: "Transforming ambitious creative visions into world-class production pipelines.",
+      specialty: "Production Management, Operations & Studio Strategy",
     },
   ];
 
@@ -77,7 +50,7 @@ export default function AboutTeam() {
       ? team
       : team.filter((member) => member.department === selectedDept);
 
-  const departments = ["All", "Leadership", "Animation & IP", "Commercial & Brand", "MagicLab Academy"];
+  const departments = ["All", "Leadership", "Animation & IP"];
 
   return (
     <section id="team" className="py-20 md:py-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-b border-white/10">
@@ -122,7 +95,7 @@ export default function AboutTeam() {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-[1.01] group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-cover object-top scale-[1.01] group-hover:scale-105 transition-all duration-500"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-xs text-white/90 font-medium">

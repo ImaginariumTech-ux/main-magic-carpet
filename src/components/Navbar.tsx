@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { getCalApi } from "@calcom/embed-react";
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -12,6 +13,13 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [worksOpen, setWorksOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "30min" });
+      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+    })();
+  }, []);
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 transition-colors duration-300">
@@ -217,7 +225,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
           {/* Create With Us */}
           <li>
             <button
-              onClick={onOpenContact}
+              data-cal-namespace="30min"
+              data-cal-link="magic-carpet-ywfdx8/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
               className="text-white/80 hover:text-white transition-colors py-2 focus:outline-none"
             >
               Create With Us
@@ -242,7 +252,9 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
         {/* Desktop Call To Action */}
         <div className="hidden md:block">
           <button
-            onClick={onOpenContact}
+            data-cal-namespace="30min"
+            data-cal-link="magic-carpet-ywfdx8/30min"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
             className="px-6 py-2.5 rounded-full border border-white/20 hover:border-yellow-400 text-xs font-semibold uppercase tracking-wider text-white bg-white/5 hover:bg-yellow-400 hover:text-black transition-all duration-300 shadow-lg"
           >
             Get in touch
@@ -354,10 +366,10 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             {/* Direct Links */}
             <div className="pt-2 border-t border-white/10 space-y-3">
               <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                }}
+                data-cal-namespace="30min"
+                data-cal-link="magic-carpet-ywfdx8/30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                onClick={() => setMobileMenuOpen(false)}
                 className="block text-xl font-light text-left text-white hover:text-yellow-400 transition-colors"
               >
                 Create With Us
@@ -383,10 +395,10 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
           <div className="border-t border-white/10 pt-4 space-y-4">
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenContact();
-              }}
+              data-cal-namespace="30min"
+              data-cal-link="magic-carpet-ywfdx8/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3.5 rounded-full bg-yellow-400 text-black font-semibold text-center text-sm uppercase tracking-wider shadow-xl"
             >
               Start a Project

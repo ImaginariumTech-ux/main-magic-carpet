@@ -52,11 +52,34 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
             <h3 className="text-xl font-medium text-white">Inquiry Received</h3>
             <p className="text-sm text-white/60 max-w-md mx-auto">
-              Thank you, {form.name || "friend"}. An executive producer from our Paris or London studio will reach out shortly.
+              Thank you, {form.name || "friend"}. An executive producer from our team will reach out shortly.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+          <div className="space-y-4">
+            {/* Cal.com Quick Schedule Banner */}
+            <div className="p-4 rounded-xl bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-between gap-4">
+              <div>
+                <div className="text-xs font-semibold text-yellow-400 uppercase tracking-wider">Fast Track Meeting</div>
+                <div className="text-xs text-white/80 mt-0.5">Book a 30-minute discovery call directly on our calendar</div>
+              </div>
+              <button
+                type="button"
+                data-cal-namespace="30min"
+                data-cal-link="magic-carpet-ywfdx8/30min"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                onClick={onClose}
+                className="px-4 py-2 rounded-lg bg-yellow-400 text-black text-xs font-bold whitespace-nowrap hover:bg-yellow-300 transition-colors shadow-md"
+              >
+                Book Call 📅
+              </button>
+            </div>
+
+            <div className="relative text-center my-2">
+              <span className="bg-neutral-950 px-3 text-xs text-white/40 uppercase tracking-widest">Or Send A Message</span>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4 text-sm">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs uppercase tracking-wider text-white/60 mb-1.5 font-medium">
@@ -139,6 +162,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               Submit Project Inquiry
             </button>
           </form>
+          </div>
         )}
       </div>
     </div>

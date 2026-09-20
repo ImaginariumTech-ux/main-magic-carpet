@@ -19,6 +19,9 @@ export default function Footer({ onOpenContact }: FooterProps) {
             </h2>
 
             <button
+              data-cal-namespace="30min"
+              data-cal-link="magic-carpet-ywfdx8/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
               onClick={onOpenContact}
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/40 hover:border-white text-base font-medium bg-white/5 hover:bg-white hover:text-black transition-all duration-300 group"
             >

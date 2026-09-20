@@ -56,6 +56,9 @@ export default function Hero({ onOpenContact }: HeroProps) {
           {/* Right Column: CTA Buttons */}
           <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-stretch gap-3.5 shrink-0">
             <button
+              data-cal-namespace="30min"
+              data-cal-link="magic-carpet-ywfdx8/30min"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
               onClick={onOpenContact}
               className="flex items-center justify-between gap-6 rounded-full bg-white text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:bg-yellow-400 hover:scale-105"
             >
