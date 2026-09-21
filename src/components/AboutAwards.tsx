@@ -21,8 +21,8 @@ export default function AboutAwards({
       project: "Shorts & Animated Campaigns",
       description:
         "Crafting high-octane 2D and 3D animated content, short series, and character-driven stories that entertain and inspire young audiences globally.",
-      backdrop: "https://img.youtube.com/vi/15Zfj4qgLB0/maxresdefault.jpg",
-      thumbnail: "https://img.youtube.com/vi/15Zfj4qgLB0/sddefault.jpg",
+      backdrop: "https://img.youtube.com/vi/wgSuS3FAVhE/maxresdefault.jpg",
+      thumbnail: "https://img.youtube.com/vi/wgSuS3FAVhE/hqdefault.jpg",
       stats: "Global Television • Prime Time Feature",
     },
     {

@@ -4,8 +4,9 @@ import { useState } from "react";
 
 export interface IPItem {
   id: string;
-  youtubeId: string;
-  youtubeUrl: string;
+  youtubeId?: string;
+  youtubeUrl?: string;
+  videoUrl?: string; // Direct Cloudinary / MP4 video URL
   title: string;
   category: string;
   badgeStatus: string;

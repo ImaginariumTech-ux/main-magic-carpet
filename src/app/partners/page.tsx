@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import IPHeroBillboard from "@/components/IPHeroBillboard";
-import IPContentRail, { IPItem } from "@/components/IPContentRail";
 import IPTheaterModal from "@/components/IPTheaterModal";
 import ContactModal from "@/components/ContactModal";
 import Footer from "@/components/Footer";
+import { IPItem } from "@/components/IPContentRail";
 
 export default function PartnersPage() {
   const [selectedPartner, setSelectedPartner] = useState<IPItem | null>(null);
@@ -15,8 +14,8 @@ export default function PartnersPage() {
   const partnerList: IPItem[] = [
     {
       id: "cartoon-network",
-      youtubeId: "15Zfj4qgLB0",
-      youtubeUrl: "https://www.youtube.com/watch?v=15Zfj4qgLB0",
+      youtubeId: "wgSuS3FAVhE",
+      youtubeUrl: "https://www.youtube.com/watch?v=wgSuS3FAVhE",
       title: "Cartoon Network Partnership",
       category: "Broadcast Animation Leaders",
       badgeStatus: "FEATURED BROADCAST PARTNER",
@@ -26,8 +25,8 @@ export default function PartnersPage() {
       logline: "Crafting high-octane 2D and 3D animated content, short series, and character-driven stories that entertain and inspire young audiences globally.",
       synopsis: "In collaboration with Cartoon Network, Magic Carpet Studios delivers vibrant broadcast animation, engaging storyboards, and short-form original content.",
       director: "Cartoon Network & Magic Carpet",
-      thumbnail: "https://img.youtube.com/vi/15Zfj4qgLB0/sddefault.jpg",
-      backdrop: "https://img.youtube.com/vi/15Zfj4qgLB0/maxresdefault.jpg",
+      thumbnail: "https://img.youtube.com/vi/wgSuS3FAVhE/hqdefault.jpg",
+      backdrop: "https://img.youtube.com/vi/wgSuS3FAVhE/maxresdefault.jpg",
       tags: ["Broadcast Animation", "Shorts", "2D/3D Series", "Youth Entertainment"],
     },
     {
@@ -88,19 +87,126 @@ export default function PartnersPage() {
       {/* Navigation Header */}
       <Navbar onOpenContact={() => setContactOpen(true)} />
 
-      {/* Hero Billboard Spotlight Carousel for Clients & Partners */}
-      <IPHeroBillboard
-        items={partnerList}
-        onPlayTrailer={(partner) => setSelectedPartner(partner)}
-      />
+      {/* Hero Spotlight Section */}
+      <section className="relative pt-36 sm:pt-44 pb-16 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto text-center border-b border-white/10">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs text-yellow-400 font-semibold tracking-wide mb-6">
+          <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+          <span className="uppercase tracking-wider">Clients & Partners Showcase</span>
+        </div>
 
-      {/* Content Rail: Featured Clients & Global Alliances */}
-      <IPContentRail
-        title="Global Clients & Partner Alliances"
-        subtitle="Explore official campaigns, co-productions, and international streaming partnerships"
-        items={partnerList}
-        onSelectIp={(partner) => setSelectedPartner(partner)}
-      />
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white mb-6">
+          Global Clients & <br />
+          <em className="font-serif-accent font-normal text-yellow-400 not-italic italic">Strategic Partners</em>
+        </h1>
+
+        <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+          Collaborating with international broadcasters, cultural organizations, and continental distribution alliances to bring world-class animation to millions.
+        </p>
+      </section>
+
+      {/* 2-Column Split Projects List (Media on Left, Details on Right) */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto space-y-20">
+        {partnerList.map((partner, index) => (
+          <div
+            key={partner.id}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/15 backdrop-blur-md hover:border-yellow-400/40 transition-all duration-500 shadow-2xl"
+          >
+            {/* Left Column: Image / Video Media Container */}
+            <div className="lg:col-span-7 relative group">
+              <div
+                className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-neutral-900 border border-white/15 shadow-2xl cursor-pointer"
+                onClick={() => setSelectedPartner(partner)}
+              >
+                <img
+                  src={partner.backdrop || partner.thumbnail}
+                  alt={partner.title}
+                  className="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Dark Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                {/* Top Badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-xs font-semibold text-yellow-400 uppercase tracking-wider font-mono">
+                    {partner.badgeStatus}
+                  </span>
+                </div>
+
+                {/* Play Video Trigger Overlay */}
+                <div className="absolute inset-0 z-20 flex items-center justify-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-yellow-400 text-black flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                    <svg className="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-white/70 font-mono">
+                  <span>Partner Showcase Reel</span>
+                  <span className="text-yellow-400">Click to Play ↗</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Header & Details Text */}
+            <div className="lg:col-span-5 space-y-5">
+              {/* Category Subtitle */}
+              <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                <span>{partner.category}</span>
+              </div>
+
+              {/* Header Text */}
+              <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug">
+                {partner.title}
+              </h2>
+
+              {/* Body Text */}
+              <p className="text-base text-white/80 font-light leading-relaxed">
+                {partner.synopsis || partner.logline}
+              </p>
+
+              {/* Tags / Focus Areas */}
+              <div className="space-y-2 pt-2">
+                <div className="text-xs uppercase tracking-wider text-white/40 font-mono">Focus Areas & Format</div>
+                <div className="flex flex-wrap gap-2">
+                  {partner.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/70"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => setSelectedPartner(partner)}
+                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-yellow-400 text-black font-extrabold text-xs uppercase tracking-wider hover:bg-white transition-all duration-300 shadow-xl"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Watch Partner Reel</span>
+                </button>
+
+                <button
+                  data-cal-namespace="30min"
+                  data-cal-link="magic-carpet-ywfdx8/30min"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                  className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white/20 transition-all duration-300"
+                >
+                  Partner With Us
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />

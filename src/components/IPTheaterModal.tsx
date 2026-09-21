@@ -42,15 +42,29 @@ export default function IPTheaterModal({ ip, onClose, onOpenContact }: IPTheater
           ✕
         </button>
 
-        {/* Embedded YouTube Player Container (16:9 Aspect Ratio) */}
+        {/* Embedded Video Player Container (16:9 Aspect Ratio) */}
         <div className="relative w-full aspect-video bg-black shrink-0">
-          <iframe
-            src={`https://www.youtube.com/embed/${ip.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
-            title={ip.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full border-0"
-          />
+          {ip.videoUrl ? (
+            <video
+              src={ip.videoUrl}
+              controls
+              autoPlay
+              playsInline
+              className="w-full h-full object-contain"
+            />
+          ) : ip.youtubeId ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${ip.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+              title={ip.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-white/50 text-sm font-mono">
+              Video media preview coming soon
+            </div>
+          )}
         </div>
 
         {/* Details & Information Body */}
@@ -73,16 +87,28 @@ export default function IPTheaterModal({ ip, onClose, onOpenContact }: IPTheater
               </h2>
             </div>
 
-            {/* Direct YouTube Link Button */}
-            <a
-              href={ip.youtubeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg"
-            >
-              <span>Watch on YouTube</span>
-              <span>↗</span>
-            </a>
+            {/* Video Action Button */}
+            {ip.youtubeUrl ? (
+              <a
+                href={ip.youtubeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg"
+              >
+                <span>Watch on YouTube</span>
+                <span>↗</span>
+              </a>
+            ) : ip.videoUrl ? (
+              <a
+                href={ip.videoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-yellow-400 hover:bg-white text-black text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg"
+              >
+                <span>Open Video Link</span>
+                <span>↗</span>
+              </a>
+            ) : null}
           </div>
 
           {/* Logline & Full Synopsis */}

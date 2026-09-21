@@ -41,19 +41,14 @@ export default function Footer({ onOpenContact }: FooterProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#news" className="hover:text-white transition-colors">
-                    News
+                  <Link href="/blog" className="hover:text-white transition-colors">
+                    Blog & News
                   </Link>
                 </li>
                 <li>
                   <Link href="/about" className="hover:text-white transition-colors">
                     About Us
                   </Link>
-                </li>
-                <li>
-                  <button onClick={onOpenContact} className="hover:text-white transition-colors text-left">
-                    Capabilities
-                  </button>
                 </li>
               </ul>
             </div>

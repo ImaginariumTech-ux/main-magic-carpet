@@ -34,16 +34,11 @@ export default function Hero({ onOpenContact }: HeroProps) {
           {/* Left Column: Header & Copy */}
           <div className="max-w-[760px] space-y-4">
             {/* Spotlight Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs text-white/90 font-medium tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="uppercase tracking-wider">Magic Carpet Studios • Official Showcase</span>
-            </div>
-
             {/* Header Text */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.08] tracking-tight text-white drop-shadow-2xl">
-              High-quality animation.{" "}
+              Turn your ideas into{" "}
               <em className="font-serif-accent font-normal text-yellow-400 not-italic italic">
-                From idea to screen.
+                Animation
               </em>
             </h1>
 
@@ -62,25 +57,9 @@ export default function Hero({ onOpenContact }: HeroProps) {
               onClick={onOpenContact}
               className="flex items-center justify-between gap-6 rounded-full bg-white text-black font-extrabold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:bg-yellow-400 hover:scale-105"
             >
-              <span>Start a Project</span>
+              <span>Book a discovery Call</span>
               <span className="text-xs">→</span>
             </button>
-
-            <Link
-              href="/projects"
-              className="flex items-center justify-between gap-6 rounded-full border border-white/30 bg-white/10 backdrop-blur-xl text-white hover:border-white hover:bg-white/20 font-semibold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300"
-            >
-              <span>Explore Our IPs</span>
-              <span className="text-xs text-white/60">01</span>
-            </Link>
-
-            <Link
-              href="/partners"
-              className="flex items-center justify-between gap-6 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white/80 hover:border-white hover:bg-white/15 hover:text-white font-semibold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300"
-            >
-              <span>Clients & Partners</span>
-              <span className="text-xs text-white/60">02</span>
-            </Link>
           </div>
         </div>
       </div>

@@ -198,21 +198,21 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 className="absolute top-full left-0 w-72 mt-1 bg-[#0B0E14] border border-white/10 rounded-xl p-4 shadow-2xl z-50 animate-hero-fade space-y-2"
               >
                 <Link
-                  href="/about#studios"
+                  href="/services/explainer-videos"
                   onClick={() => setServicesOpen(false)}
                   className="block text-base font-bold text-white hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5"
                 >
                   Explainer Videos & Motion Graphics
                 </Link>
                 <Link
-                  href="/#featured-work"
+                  href="/services/2d-3d-animation"
                   onClick={() => setServicesOpen(false)}
                   className="block text-base font-bold text-white hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5"
                 >
                   Original 2D & 3D IP Animation
                 </Link>
                 <Link
-                  href="/about#studios"
+                  href="/services/brand-storytelling"
                   onClick={() => setServicesOpen(false)}
                   className="block text-base font-bold text-white hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-white/5"
                 >
@@ -236,16 +236,29 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
           {/* Blog */}
           <li>
-            <Link href="/#news" className="text-white/80 hover:text-white transition-colors py-2">
+            <Link
+              href="/blog"
+              onClick={() => {
+                setAboutOpen(false);
+                setWorksOpen(false);
+                setServicesOpen(false);
+              }}
+              className="text-white/80 hover:text-yellow-400 transition-colors py-2"
+            >
               Blog
             </Link>
           </li>
 
           {/* Academy */}
           <li>
-            <Link href="/about#philosophy" className="text-white/80 hover:text-white transition-colors py-2">
-              Academy
-            </Link>
+            <a
+              href="https://magiclab.studio"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/80 hover:text-yellow-400 transition-colors py-2 flex items-center gap-1"
+            >
+              Academy ↗
+            </a>
           </li>
         </ul>
 
@@ -341,21 +354,21 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             <div className="space-y-2 pt-2 border-t border-white/10">
               <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold">Services</div>
               <Link
-                href="/about#studios"
+                href="/services/explainer-videos"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
               >
                 Explainer Videos & Motion Graphics
               </Link>
               <Link
-                href="/#featured-work"
+                href="/services/2d-3d-animation"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
               >
                 Original 2D & 3D Animation
               </Link>
               <Link
-                href="/about#studios"
+                href="/services/brand-storytelling"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
               >
@@ -376,20 +389,22 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               </button>
 
               <Link
-                href="/#news"
+                href="/blog"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-xl font-light text-white hover:text-yellow-400 transition-colors"
               >
                 Blog
               </Link>
 
-              <Link
-                href="/about#philosophy"
+              <a
+                href="https://magiclab.studio"
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-xl font-light text-white hover:text-yellow-400 transition-colors"
               >
-                Academy
-              </Link>
+                Academy ↗
+              </a>
             </div>
           </div>
 
