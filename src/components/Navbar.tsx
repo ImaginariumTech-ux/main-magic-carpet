@@ -14,6 +14,11 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
   const [worksOpen, setWorksOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
 
+  // Mobile submenu accordions
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileWorksOpen, setMobileWorksOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "30min" });
@@ -305,75 +310,142 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               </Link>
             </div>
 
-            {/* About Us Group */}
-            <div className="space-y-2 pt-2 border-t border-white/10">
-              <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold">About Us</div>
-              <Link
-                href="/about#team"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
+            {/* About Us Group - Collapsible */}
+            <div className="pt-2 border-t border-white/10">
+              <button
+                onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                className="w-full flex items-center justify-between text-xl font-light text-white hover:text-yellow-400 py-1 transition-colors text-left"
               >
-                Our Team
-              </Link>
-              <Link
-                href="/about#awards"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
-              >
-                Awards & Recognition
-              </Link>
-              <Link
-                href="/about#timeline"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
-              >
-                Our 8-Year Story
-              </Link>
+                <span>About Us</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    mobileAboutOpen ? "rotate-180 text-yellow-400" : "text-white/60"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {mobileAboutOpen && (
+                <div className="space-y-2.5 pt-2 pb-1 pl-3 border-l-2 border-yellow-400/40 ml-2 mt-2 space-y-2">
+                  <Link
+                    href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    About Overview
+                  </Link>
+                  <Link
+                    href="/about#team"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Our Team
+                  </Link>
+                  <Link
+                    href="/about#awards"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Awards & Recognition
+                  </Link>
+                  <Link
+                    href="/about#timeline"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Our 8-Year Story
+                  </Link>
+                </div>
+              )}
             </div>
 
-            {/* Works Group */}
-            <div className="space-y-2 pt-2 border-t border-white/10">
-              <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold">Works</div>
-              <Link
-                href="/projects"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
+            {/* Works Group - Collapsible */}
+            <div className="pt-2 border-t border-white/10">
+              <button
+                onClick={() => setMobileWorksOpen(!mobileWorksOpen)}
+                className="w-full flex items-center justify-between text-xl font-light text-white hover:text-yellow-400 py-1 transition-colors text-left"
               >
-                Our IPs
-              </Link>
-              <Link
-                href="/partners"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
-              >
-                Clients and Partners
-              </Link>
+                <span>Works</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    mobileWorksOpen ? "rotate-180 text-yellow-400" : "text-white/60"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {mobileWorksOpen && (
+                <div className="space-y-2.5 pt-2 pb-1 pl-3 border-l-2 border-yellow-400/40 ml-2 mt-2 space-y-2">
+                  <Link
+                    href="/projects"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Our IPs
+                  </Link>
+                  <Link
+                    href="/partners"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Clients and Partners
+                  </Link>
+                </div>
+              )}
             </div>
 
-            {/* Services Group */}
-            <div className="space-y-2 pt-2 border-t border-white/10">
-              <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold">Services</div>
-              <Link
-                href="/services/explainer-videos"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
+            {/* Services Group - Collapsible */}
+            <div className="pt-2 border-t border-white/10">
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex items-center justify-between text-xl font-light text-white hover:text-yellow-400 py-1 transition-colors text-left"
               >
-                Explainer Videos & Motion Graphics
-              </Link>
-              <Link
-                href="/services/2d-3d-animation"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
-              >
-                Original 2D & 3D Animation
-              </Link>
-              <Link
-                href="/services/brand-storytelling"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-lg font-medium text-white hover:text-yellow-400 pl-3"
-              >
-                Brand Storytelling
-              </Link>
+                <span>Services</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    mobileServicesOpen ? "rotate-180 text-yellow-400" : "text-white/60"
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {mobileServicesOpen && (
+                <div className="space-y-2.5 pt-2 pb-1 pl-3 border-l-2 border-yellow-400/40 ml-2 mt-2 space-y-2">
+                  <Link
+                    href="/services/explainer-videos"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Explainer Videos & Motion Graphics
+                  </Link>
+                  <Link
+                    href="/services/2d-3d-animation"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Original 2D & 3D Animation
+                  </Link>
+                  <Link
+                    href="/services/brand-storytelling"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block text-base font-medium text-white/90 hover:text-yellow-400 transition-colors"
+                  >
+                    Brand Storytelling
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Direct Links */}
