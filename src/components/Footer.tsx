@@ -3,104 +3,119 @@
 import Link from "next/link";
 
 interface FooterProps {
-  onOpenContact: () => void;
+  onOpenContact?: () => void;
 }
 
 export default function Footer({ onOpenContact }: FooterProps) {
+  const videoId = "qyb0vR9ISCc";
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1&playsinline=1`;
+
   return (
-    <footer className="bg-black text-white border-t border-white/15">
-      <div className="px-4 sm:px-6 lg:px-10 py-20 lg:py-28 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Main CTA Block */}
-          <div className="space-y-8">
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
-              Your next project <br />
-              <em className="font-serif-accent font-normal text-white/80 not-italic italic">starts here.</em>
-            </h2>
+    <>
+      {/* Pre-Footer CTA Section with Video Background */}
+      <section className="relative min-h-[420px] sm:min-h-[500px] w-full overflow-hidden bg-[#0E121B] text-white flex flex-col items-center justify-center text-center px-4 py-20 border-t border-[#0E121B]/10">
+        {/* Background YouTube Video Embed */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <iframe
+            src={embedUrl}
+            title="Magic Carpet Studios Pre-Footer Video Reel"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] min-w-full min-h-full object-cover scale-[1.25] pointer-events-none brightness-[0.85] contrast-[1.05]"
+          />
+          {/* Lighter Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B] via-[#0E121B]/40 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,18,27,0.1)_0%,rgba(14,18,27,0.7)_100%)] pointer-events-none" />
+        </div>
 
-            <button
-              data-cal-namespace="30min"
-              data-cal-link="magic-carpet-ywfdx8/30min"
-              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-              onClick={onOpenContact}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/40 hover:border-white text-base font-medium bg-white/5 hover:bg-white hover:text-black transition-all duration-300 group"
+        {/* Banner Content Overlay */}
+        <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white leading-tight drop-shadow-2xl">
+            Have a project <em className="font-serif-accent font-normal text-sky-200 not-italic italic">in mind?</em>
+          </h2>
+
+          <p className="text-lg sm:text-2xl text-white/90 font-light max-w-2xl mx-auto drop-shadow-md">
+            Let&apos;s bring it to life.
+          </p>
+
+          <div className="pt-4">
+            <Link
+              href="/work-with-us"
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white hover:bg-slate-100 text-[#0E121B] font-extrabold text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:scale-105"
             >
-              <span>Get in touch</span>
-              <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
-            </button>
+              <span>Work with us</span>
+              <span className="text-lg">→</span>
+            </Link>
           </div>
+        </div>
+      </section>
 
-          {/* Right Sitemap Navigation */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+      {/* Main Sitemap Footer */}
+      <footer className="bg-white text-[#0E121B] border-t border-[#0E121B]/10">
+        <div className="px-4 sm:px-6 lg:px-10 py-16 lg:py-20 max-w-7xl mx-auto">
+          {/* Sitemap Navigation */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-sm">
             <div className="space-y-4">
-              <div className="text-xs uppercase tracking-widest text-white/40 font-semibold">Explore</div>
-              <ul className="space-y-2.5 text-white/70">
+              <div className="text-xs uppercase tracking-widest text-[#0E121B]/40 font-semibold">Explore</div>
+              <ul className="space-y-2.5 text-[#0E121B]/70">
                 <li>
-                  <Link href="/#featured-work" className="hover:text-white transition-colors">
-                    Work
+                  <Link href="/work-with-us" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Work with us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="hover:text-white transition-colors">
-                    Blog & News
-                  </Link>
+                  <a href="https://magiclab.studio" target="_blank" rel="noreferrer" className="hover:text-[#0E121B] transition-colors inline-flex items-baseline gap-1.5 font-medium">
+                    <span>Academy</span>
+                    <span className="text-[11px] text-[#0E121B] font-bold">Learn how to animate</span>
+                  </a>
                 </li>
-                <li>
-                  <Link href="/about" className="hover:text-white transition-colors">
-                    About Us
-                  </Link>
+                <li className="pt-1"> 
+                  <span className="font-medium text-[#0E121B]/50">For Partnerships:</span> <span className="font-semibold text-[#0E121B]">hello@magiccarpet.studio</span>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-4">
-              <div className="text-xs uppercase tracking-widest text-white/40 font-semibold">Studio HQ</div>
-              <ul className="space-y-2 text-white/70 text-xs leading-relaxed">
-                <li className="font-semibold text-white">Lagos, Nigeria</li>
+              <div className="text-xs uppercase tracking-widest text-[#0E121B]/40 font-semibold">Address</div>
+              <ul className="space-y-2 text-[#0E121B]/70 text-xs leading-relaxed">
+                <li className="font-bold text-[#0E121B]">Lagos, Nigeria</li>
                 <li>Plot 18, Nike Art Gallery Road</li>
                 <li>Ikate, Lekki, Lagos</li>
-                <li className="pt-2 text-yellow-400 font-mono">hello@magiccarpet.studio</li>
               </ul>
             </div>
 
-            <div className="space-y-4 col-span-2 sm:col-span-1">
-              <div className="text-xs uppercase tracking-widest text-white/40 font-semibold">Social</div>
-              <ul className="space-y-2.5 text-white/70">
+            <div className="space-y-4">
+              <div className="text-xs uppercase tracking-widest text-[#0E121B]/40 font-semibold">Social</div>
+              <ul className="space-y-2.5 text-[#0E121B]/70">
                 <li>
-                  <a href="https://www.instagram.com/magiccarpetstudios_" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                    Instagram ↗
+                  <a href="https://www.instagram.com/magiccarpetstudios_" target="_blank" rel="noreferrer" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Instagram (IG) ↗
                   </a>
                 </li>
                 <li>
-                  <a href="https://x.com/magiccarpetng" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                    X (Twitter) ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/@MagicCarpetStudios" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                    YouTube ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/company/magic-carpet-studios" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://www.linkedin.com/company/magic-carpet-studios" target="_blank" rel="noreferrer" className="hover:text-[#0E121B] transition-colors font-medium">
                     LinkedIn ↗
                   </a>
                 </li>
+                <li>
+                  <a href="https://www.youtube.com/@MagicCarpetStudios" target="_blank" rel="noreferrer" className="hover:text-[#0E121B] transition-colors font-medium">
+                    YouTube (YT) ↗
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-        </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 gap-4">
-          <div>© {new Date().getFullYear()} Magic Carpet Studios. All rights reserved. Authentic African Storytelling.</div>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white/70">Privacy Policy</a>
-            <a href="#" className="hover:text-white/70">Terms of Use</a>
-            <a href="#" className="hover:text-white/70">Cookies</a>
+          {/* Bottom Credits & Copyright */}
+          <div className="mt-16 pt-8 border-t border-[#0E121B]/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#0E121B]/50 gap-4">
+            <div>© {new Date().getFullYear()} Magic Carpet Studios. All rights reserved. Lagos, Nigeria.</div>
+            <div className="flex gap-6">
+              <Link href="/privacy" className="hover:text-[#0E121B]">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#0E121B]">Terms of Use</Link>
+              <Link href="/cookies" className="hover:text-[#0E121B]">Cookies</Link>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

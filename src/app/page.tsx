@@ -1,48 +1,44 @@
 "use client";
 
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import AboutSection from "@/components/AboutSection";
-import FeaturedWork, { Project } from "@/components/FeaturedWork";
-import NewsSection from "@/components/NewsSection";
-import ProjectModal from "@/components/ProjectModal";
-import ContactModal from "@/components/ContactModal";
+import TrustedByLogos from "@/components/TrustedByLogos";
+import WhatWeDo from "@/components/WhatWeDo";
+import HomeClientWork from "@/components/HomeClientWork";
+import HomeOriginalIPs from "@/components/HomeOriginalIPs";
+import WhyWorkWithUs from "@/components/WhyWorkWithUs";
+import HowWeWork from "@/components/HowWeWork";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [contactOpen, setContactOpen] = useState(false);
-
   return (
-    <main className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
-      {/* Navigation */}
-      <Navbar onOpenContact={() => setContactOpen(true)} />
+    <main className="relative min-h-screen  text-white selection:bg-yellow-400 selection:text-black">
+      {/* 1. Header Navigation */}
+      <Navbar onOpenContact={() => {}} />
 
-      {/* Video Hero */}
-      <Hero onOpenContact={() => setContactOpen(true)} />
+      {/* 2. Hero Section */}
+      <Hero />
 
-      {/* About & Studio Statement */}
-      <AboutSection />
+      {/* 3. Trusted By Social Proof Logos */}
+      <TrustedByLogos />
 
-      {/* Bento Grid Portfolio */}
-      <FeaturedWork onSelectProject={(project) => setSelectedProject(project)} />
+      {/* 4. What We Do (3 Core Pillars) */}
+      <WhatWeDo />
 
-      {/* Interactive Flex Accordion News */}
-      <NewsSection />
+      {/* 5. Featured Client Work (3 Showcase Projects) */}
+      <HomeClientWork />
 
-      {/* Footer & CTA */}
-      <Footer onOpenContact={() => setContactOpen(true)} />
+      {/* 6. Original IPs Section */}
+      <HomeOriginalIPs />
 
-      {/* Project Video Modal */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onOpenContact={() => setContactOpen(true)}
-      />
+      {/* 7. Why Work With Us (4 Advantage Cards) */}
+      <WhyWorkWithUs />
 
-      {/* Contact Inquiry Modal */}
-      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      {/* 8. How We Work (8-Step Production Process) */}
+      <HowWeWork />
+
+      {/* 9. Pre-Footer Video CTA + Main Sitemap Footer */}
+      <Footer />
     </main>
   );
 }

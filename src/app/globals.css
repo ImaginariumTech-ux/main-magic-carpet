@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #0e121b;
   --font-serif-family: var(--font-playfair), Georgia, serif;
 }
 
@@ -16,12 +16,12 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  background: #000000;
-  color: #ffffff;
+  background: #ffffff;
+  color: #0e121b;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
 }
@@ -71,12 +71,24 @@ body {
 }
 
 /* Hero Carousel Thumbnail Progress Bar animation */
-@keyframes growProgress {
+/* Marquee scrolling animation */
+@keyframes marquee {
   0% {
-    width: 0%;
+    transform: translateX(0%);
   }
   100% {
-    width: 100%;
+    transform: translateX(-50%);
   }
 }
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 
