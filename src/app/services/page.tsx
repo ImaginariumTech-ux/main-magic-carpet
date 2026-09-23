@@ -50,7 +50,7 @@ function StickyStorytellingSection() {
       paragraph:
         "Our multidisciplinary team brings together experienced artists and creatives across story development, character design, animation, voice acting, editing, music, and sound design. This means you can work with one single production partner across the different stages of your project.",
       image: "/akousa.png",
-      position: "left", // Text Right, Image Left (Switches across)
+      position: "left", // Text Right, Image Left
     },
     {
       num: "03",
@@ -59,111 +59,165 @@ function StickyStorytellingSection() {
       paragraph:
         "We work across a range of formats and needs, from advertising and explainer videos to TV series and feature films. Whatever you're looking to create, we bring the creative, production expertise, and team to take it from an idea to something people can see, hear, and connect with.",
       image: "/sip_poster.jpg",
-      position: "right", // Text Left, Image Right (Switches back)
+      position: "right", // Text Left, Image Right
     },
   ];
 
   return (
-    <div ref={containerRef} className="relative h-[250vh] sm:h-[300vh] w-full border-t border-[#0E121B]/10">
-      {/* Pinned Sticky Section Viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden px-4 sm:px-6 lg:px-12 bg-white">
-        
-        {/* Section Header & Step Indicators */}
-        <div className="absolute top-12 sm:top-20 left-1/2 -translate-x-1/2 text-center space-y-2.5 z-30 max-w-xl px-4">
+    <>
+      {/* Mobile Stacked Cards View (< lg) — Zero Overlap */}
+      <section className="lg:hidden py-16 px-4 sm:px-6 bg-white border-t border-[#0E121B]/10 space-y-10">
+        {/* Section Header */}
+        <div className="text-center space-y-3 max-w-xl mx-auto">
           <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono block">
             OUR CREATIVE APPROACH
           </span>
-          <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-[#0E121B]">
-            End-to-End Animation & <em className="font-serif-accent italic text-[#0E121B]">Creative Capabilities</em>
+          <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[#0E121B] leading-tight">
+            End-to-End Animation & <br />
+            <em className="font-serif-accent italic text-[#0E121B]">Creative Capabilities</em>
           </h2>
-
-          {/* Progress Indicators */}
-          <div className="flex items-center justify-center gap-2 pt-1">
-            {steps.map((_, idx) => (
-              <div
-                key={idx}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  activeStep === idx ? "w-10 bg-[#0E121B]" : "w-3 bg-slate-200"
-                }`}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* Content Area with Fluid Image & Text Positions */}
-        <div className="relative w-full max-w-7xl mx-auto min-h-[460px] sm:min-h-[520px] flex items-center pt-24 sm:pt-28">
-          
-          {/* Animated Image (Moves from Right to Left to Right as user scrolls!) */}
-          <div
-            className={`absolute top-1/2 -translate-y-1/2 w-full lg:w-[46%] transition-all duration-1000 ease-out z-20 ${
-              steps[activeStep].position === "left"
-                ? "left-0 translate-x-0"
-                : "left-0 lg:left-[54%] translate-x-0"
-            }`}
-          >
-            <div className="relative rounded-[32px] overflow-hidden shadow-2xl border border-slate-200 aspect-[4/3] w-full group bg-slate-100">
-              {steps.map((step, idx) => (
+        {/* 3 Mobile Step Cards */}
+        <div className="space-y-6 max-w-2xl mx-auto">
+          {steps.map((step) => (
+            <div
+              key={step.num}
+              className="bg-slate-50 border border-slate-200/90 rounded-[28px] p-6 space-y-5 shadow-lg"
+            >
+              {/* Step Header */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="font-mono text-xs font-bold text-white bg-[#0E121B] px-3.5 py-1 rounded-full shadow-md">
+                  {step.num}
+                </span>
+                <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#0E121B]/70">
+                  {step.tag}
+                </span>
+              </div>
+
+              {/* Title & Paragraph */}
+              <div className="space-y-2.5">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0E121B] leading-snug">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-[#0E121B]/80 font-light leading-relaxed">
+                  {step.paragraph}
+                </p>
+              </div>
+
+              {/* Step Image */}
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 aspect-[16/10] w-full shadow-md bg-slate-100">
                 <img
-                  key={idx}
                   src={step.image}
                   alt={step.title}
-                  className={`absolute inset-0 w-full h-full object-cover filter contrast-105 transition-all duration-1000 ${
-                    activeStep === idx
-                      ? "opacity-100 scale-100 z-10"
-                      : "opacity-0 scale-105 z-0"
+                  className="w-full h-full object-cover filter contrast-105"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Desktop Pinned Sticky Scrollytelling View (>= lg) */}
+      <div
+        ref={containerRef}
+        className="hidden lg:block relative h-[250vh] sm:h-[300vh] w-full border-t border-[#0E121B]/10"
+      >
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden px-6 lg:px-12 bg-white">
+          {/* Section Header & Step Indicators */}
+          <div className="absolute top-16 lg:top-20 left-1/2 -translate-x-1/2 text-center space-y-2.5 z-30 max-w-xl px-4">
+            <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono block">
+              OUR CREATIVE APPROACH
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-light tracking-tight text-[#0E121B]">
+              End-to-End Animation & <em className="font-serif-accent italic text-[#0E121B]">Creative Capabilities</em>
+            </h2>
+
+            {/* Progress Indicators */}
+            <div className="flex items-center justify-center gap-2 pt-1">
+              {steps.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    activeStep === idx ? "w-10 bg-[#0E121B]" : "w-3 bg-slate-200"
                   }`}
                 />
               ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 z-20 pointer-events-none" />
             </div>
           </div>
 
-          {/* Animated Text Block (Moves to Opposite Side of Image!) */}
-          <div
-            className={`absolute top-1/2 -translate-y-1/2 w-full lg:w-[48%] transition-all duration-1000 ease-out z-20 ${
-              steps[activeStep].position === "left"
-                ? "right-0 lg:right-0 text-left pl-0 lg:pl-6"
-                : "left-0 lg:left-0 text-left pr-0 lg:pr-6"
-            }`}
-          >
-            {steps.map((step, idx) => (
-              <div
-                key={idx}
-                className={`transition-all duration-1000 space-y-5 ${
-                  activeStep === idx
-                    ? "opacity-100 translate-y-0 relative z-20 block"
-                    : "opacity-0 translate-y-12 absolute inset-0 pointer-events-none hidden"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-white bg-[#0E121B] px-3.5 py-1 rounded-full shadow-md">
-                    {step.num}
-                  </span>
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0E121B]/60">
-                    {step.tag}
-                  </span>
-                </div>
-
-                <h3 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#0E121B] leading-[1.15]">
-                  {step.title}
-                </h3>
-
-                <p className="text-base sm:text-xl text-[#0E121B]/85 font-light leading-relaxed">
-                  {step.paragraph}
-                </p>
-
-                <div className="pt-2 text-xs font-mono text-[#0E121B]/50 flex items-center gap-2">
-                  <span>Scroll down to continue story</span>
-                  <span>↓</span>
-                </div>
+          {/* Content Area with Fluid Image & Text Positions */}
+          <div className="relative w-full max-w-7xl mx-auto min-h-[500px] flex items-center pt-24">
+            {/* Animated Image (Moves from Right to Left to Right as user scrolls!) */}
+            <div
+              className={`absolute top-1/2 -translate-y-1/2 w-[46%] transition-all duration-1000 ease-out z-20 ${
+                steps[activeStep].position === "left"
+                  ? "left-0 translate-x-0"
+                  : "left-[54%] translate-x-0"
+              }`}
+            >
+              <div className="relative rounded-[32px] overflow-hidden shadow-2xl border border-slate-200 aspect-[4/3] w-full group bg-slate-100">
+                {steps.map((step, idx) => (
+                  <img
+                    key={idx}
+                    src={step.image}
+                    alt={step.title}
+                    className={`absolute inset-0 w-full h-full object-cover filter contrast-105 transition-all duration-1000 ${
+                      activeStep === idx
+                        ? "opacity-100 scale-100 z-10"
+                        : "opacity-0 scale-105 z-0"
+                    }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 z-20 pointer-events-none" />
               </div>
-            ))}
+            </div>
+
+            {/* Animated Text Block (Moves to Opposite Side of Image!) */}
+            <div
+              className={`absolute top-1/2 -translate-y-1/2 w-[48%] transition-all duration-1000 ease-out z-20 ${
+                steps[activeStep].position === "left"
+                  ? "right-0 text-left pl-6"
+                  : "left-0 text-left pr-6"
+              }`}
+            >
+              {steps.map((step, idx) => (
+                <div
+                  key={idx}
+                  className={`transition-all duration-1000 space-y-5 ${
+                    activeStep === idx
+                      ? "opacity-100 translate-y-0 relative z-20 block"
+                      : "opacity-0 translate-y-12 absolute inset-0 pointer-events-none hidden"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-bold text-white bg-[#0E121B] px-3.5 py-1 rounded-full shadow-md">
+                      {step.num}
+                    </span>
+                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0E121B]/60">
+                      {step.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-3xl lg:text-5xl font-bold tracking-tight text-[#0E121B] leading-[1.15]">
+                    {step.title}
+                  </h3>
+
+                  <p className="text-base lg:text-xl text-[#0E121B]/85 font-light leading-relaxed">
+                    {step.paragraph}
+                  </p>
+
+                  <div className="pt-2 text-xs font-mono text-[#0E121B]/50 flex items-center gap-2">
+                    <span>Scroll down to continue story</span>
+                    <span>↓</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-
         </div>
-
       </div>
-    </div>
+    </>
   );
 }
 

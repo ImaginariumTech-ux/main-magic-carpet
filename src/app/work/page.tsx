@@ -228,7 +228,7 @@ export default function WorkPage() {
 
 
       {/* Footer */}
-      <Footer onOpenContact={() => setContactOpen(true)} />
+      <Footer showPreFooter={true} onOpenContact={() => setContactOpen(true)} />
 
       {/* Full-Screen YouTube Theater Player Modal */}
       <IPTheaterModal

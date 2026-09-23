@@ -38,7 +38,7 @@ export default function Home() {
       <HowWeWork />
 
       {/* 9. Pre-Footer Video CTA + Main Sitemap Footer */}
-      <Footer />
+      <Footer showPreFooter={true} />
     </main>
   );
 }
