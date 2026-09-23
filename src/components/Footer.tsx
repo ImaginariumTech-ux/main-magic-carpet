@@ -7,24 +7,22 @@ interface FooterProps {
 }
 
 export default function Footer({ onOpenContact }: FooterProps) {
-  const videoId = "qyb0vR9ISCc";
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1&playsinline=1`;
-
   return (
     <>
       {/* Pre-Footer CTA Section with Video Background */}
       <section className="relative min-h-[420px] sm:min-h-[500px] w-full overflow-hidden bg-[#0E121B] text-white flex flex-col items-center justify-center text-center px-4 py-20 border-t border-[#0E121B]/10">
-        {/* Background YouTube Video Embed */}
+        {/* Background Cloudinary Video */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <iframe
-            src={embedUrl}
-            title="Magic Carpet Studios Pre-Footer Video Reel"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] min-w-full min-h-full object-cover scale-[1.25] pointer-events-none brightness-[0.85] contrast-[1.05]"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            src="https://res.cloudinary.com/dt2vu9jje/video/upload/v1790149693/LOB_o8iwfb.mp4"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none brightness-100 contrast-105"
           />
-          {/* Lighter Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B] via-[#0E121B]/40 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,18,27,0.1)_0%,rgba(14,18,27,0.7)_100%)] pointer-events-none" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B]/90 via-[#0E121B]/40 to-black/30 pointer-events-none" />
         </div>
 
         {/* Banner Content Overlay */}

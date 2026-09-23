@@ -27,7 +27,7 @@ export default function WhatWeDo() {
     },
     {
       num: "02",
-      title: "Explainer & Educational",
+      title: "Explainer & Educational Animation",
       description: "Clear, engaging animation for products, organisations and complex ideas.",
       link: "/services",
       theme: {

@@ -39,7 +39,7 @@ export default function HomeOriginalIPs() {
       status: "IN PRODUCTION",
       headline: "An Epic Saga of Honor, Passion, and Vengeance",
       description: "Based on Cyprian Ekwensi's renowned classic novel, following an elderly warrior recounting a lifelong tale of fiery passion, deadly duels, betrayal, and revenge in pre-independence northern Nigeria.",
-      poster: "https://img.youtube.com/vi/wePT7aKdgPM/maxresdefault.jpg",
+      poster: "/illia_poster.jpg",
       bgColor: "bg-[#801319]", // Rich Crimson Red
       borderColor: "border-[#991920]",
       stickyOffset: "top-16 sm:top-20",
@@ -52,7 +52,7 @@ export default function HomeOriginalIPs() {
       status: "INVESTMENT STAGE",
       headline: "Mythic Voyage Across Ancient African Realms",
       description: "Immerses viewers into a breathtaking fantasy universe where ancient African gods, mythical beasts, and young heroes clash to protect the moonlit realms from shadow spirits.",
-      poster: "https://img.youtube.com/vi/15Zfj4qgLB0/maxresdefault.jpg",
+      poster: "/akousa.png",
       bgColor: "bg-[#0D2459]", // Deep Midnight Navy
       borderColor: "border-[#123075]",
       stickyOffset: "top-20 sm:top-28",
@@ -65,7 +65,7 @@ export default function HomeOriginalIPs() {
       status: "FESTIVAL WINNER",
       headline: "Award-Winning Visual Poem on Human Fragility",
       description: "A critically acclaimed animated short film blending surrealistic 2D art with emotional storytelling, capturing an intimate journey through temptation, introspection, and redemption.",
-      poster: "https://img.youtube.com/vi/IJmiDCY_tAE/maxresdefault.jpg",
+      poster: "/sip_poster.jpg",
       bgColor: "bg-[#0C543A]", // Deep Emerald Forest
       borderColor: "border-[#106A4A]",
       stickyOffset: "top-24 sm:top-36",

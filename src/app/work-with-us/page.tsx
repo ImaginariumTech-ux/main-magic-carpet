@@ -1,8 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+function WorkWithUsHero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const startTime = 40;
+    const endTime = 46;
+
+    const handleLoadedMetadata = () => {
+      video.currentTime = startTime;
+    };
+
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= endTime || video.currentTime < startTime) {
+        video.currentTime = startTime;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", handleLoadedMetadata);
+    video.addEventListener("timeupdate", handleTimeUpdate);
+
+    if (video.readyState >= 1) {
+      video.currentTime = startTime;
+    }
+
+    return () => {
+      video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
+
+  return (
+    <section className="relative w-full min-h-[70vh] sm:min-h-[75vh] flex flex-col justify-end pb-16 sm:pb-24 pt-32 sm:pt-44 lg:pt-48 overflow-hidden border-b border-[#0E121B]/10">
+      {/* Background Video (Looping 40s to 46s) */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          src="https://res.cloudinary.com/dt2vu9jje/video/upload/v1790148975/WhatsApp_Video_2026-09-22_at_13.32.40_l9wo9a.mp4#t=40,46"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover filter contrast-105 saturate-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15 pointer-events-none" />
+      </div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 text-white space-y-4">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.08] drop-shadow-2xl">
+          Have an animation project <br className="hidden sm:inline" />
+          <em className="font-serif-accent italic text-white">in mind?</em>
+        </h1>
+        <p className="text-base sm:text-xl text-white/95 font-medium leading-relaxed max-w-2xl drop-shadow-lg">
+          Tell us what you&apos;re building and we&apos;ll get back to you in less than 24 hours.
+        </p>
+      </div>
+    </section>
+  );
+}
 
 export default function WorkWithUsPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -25,20 +88,11 @@ export default function WorkWithUsPage() {
       {/* Navigation Header */}
       <Navbar onOpenContact={() => {}} />
 
-      {/* Main Container */}
-      <div className="pt-36 pb-24 px-4 sm:px-6 lg:px-10 max-w-4xl mx-auto">
-        <div className="text-center mb-12 space-y-4">
-          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-white bg-[#0E121B] px-4 py-1.5 rounded-full shadow-md">
-            Work With Us
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-[#0E121B]">
-            Have an animation project <br className="hidden sm:block" />
-            <em className="font-serif-accent italic text-[#0E121B]">in mind?</em>
-          </h1>
-          <p className="text-[#0E121B]/70 text-lg max-w-2xl mx-auto">
-            Tell us what you&apos;re building and we&apos;ll get back to you in less than 24 hours.
-          </p>
-        </div>
+      {/* Hero Section with Video Background (40s to 46s) */}
+      <WorkWithUsHero />
+
+      {/* Main Form Container */}
+      <div className="py-16 sm:py-24 px-4 sm:px-6 lg:px-10 max-w-4xl mx-auto">
 
         {submitted ? (
           <div className="bg-slate-50 border border-[#0E121B]/20 rounded-3xl p-10 text-center space-y-6 animate-hero-fade shadow-xl">

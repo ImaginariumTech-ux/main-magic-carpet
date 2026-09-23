@@ -6,8 +6,8 @@ export default function WhyWorkWithUs() {
   const reasons = [
     {
       num: "01",
-      title: "End-to-End Production",
-      description: "From initial concept development and visual design to final animation and post-production delivery.",
+      title: "End-to-end production",
+      description: "From concept and development to animation and final delivery.",
       link: "/about",
       theme: {
         cardBg: "bg-[#040316] border-[#1D174E]",
@@ -27,8 +27,8 @@ export default function WhyWorkWithUs() {
     },
     {
       num: "02",
-      title: "Experienced Talent",
-      description: "A multidisciplinary team of world-class animators, directors, and artists across 2D and 3D pipelines.",
+      title: "Experienced creative talent",
+      description: "A multidisciplinary team across 2D and 3D production.",
       link: "/about",
       theme: {
         cardBg: "bg-[#F3F4F6] border-[#D1D5DB]",
@@ -48,8 +48,8 @@ export default function WhyWorkWithUs() {
     },
     {
       num: "03",
-      title: "Global Standards",
-      description: "Proven capability collaborating seamlessly across international markets: US, EMEA, and APAC region.",
+      title: "International production standards",
+      description: "Able to collaborate across markets: US, EMEA and APAC",
       link: "/about",
       theme: {
         cardBg: "bg-[#0E121B] border-[#1E293B]",
@@ -69,8 +69,8 @@ export default function WhyWorkWithUs() {
     },
     {
       num: "04",
-      title: "Flexible Engagement",
-      description: "Tailored production models — engage us for a specific milestone or complete end-to-end execution.",
+      title: "Flexible collaboration",
+      description: "Engage us for a specific production stage or end-to-end delivery.",
       link: "/about",
       theme: {
         cardBg: "bg-[#04140F] border-[#10382B]",
@@ -98,9 +98,7 @@ export default function WhyWorkWithUs() {
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-[#0E121B]">
             Why work <em className="font-serif-accent italic text-[#0E121B]">with us?</em>
           </h2>
-          <p className="text-[#0E121B]/70 text-lg leading-relaxed pt-2">
-            Partner with Africa&apos;s premier animation studio to bring your creative vision to life with world-class quality.
-          </p>
+          
         </div>
 
         <div className="shrink-0">

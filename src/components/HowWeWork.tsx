@@ -56,7 +56,7 @@ export default function HowWeWork() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
         <div className="max-w-2xl space-y-4">
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-[#0E121B]">
-            HOW WE <em className="font-serif-accent italic text-[#0E121B]">WORK</em>
+            How we <em className="font-serif-accent italic text-[#0E121B]">WORK</em>
           </h2>
           <p className="text-[#0E121B]/70 text-lg leading-relaxed pt-2">
             From initial idea to final delivery, our 8-step process guarantees transparency, creativity, and quality.

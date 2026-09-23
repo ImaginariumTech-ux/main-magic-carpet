@@ -8,13 +8,10 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenContact }: HeroProps) {
-  const youtubeVideoId = "wePT7aKdgPM";
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1&playsinline=1`;
-
   const words = [
     "explainers.",
     "ads & commercials.",
-    "animated series.",
+    "series.",
     "short films.",
     "feature films.",
   ];
@@ -36,17 +33,18 @@ export default function Hero({ onOpenContact }: HeroProps) {
 
   return (
     <section className="relative h-[100svh] w-full overflow-hidden bg-[#0E121B] text-white flex flex-col justify-end">
-      {/* Background YouTube Video Embed */}
+      {/* Background Cloudinary Video */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <iframe
-          src={embedUrl}
-          title="Magic Carpet Studios Showreel"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300%] h-[300%] min-w-full min-h-full object-cover scale-[1.25] pointer-events-none brightness-[0.85] contrast-[1.05]"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="https://res.cloudinary.com/dt2vu9jje/video/upload/v1790148975/WhatsApp_Video_2026-09-22_at_13.32.40_l9wo9a.mp4"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none brightness-100 contrast-105"
         />
-        {/* Lighter Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B] via-[#0E121B]/40 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,18,27,0)_0%,rgba(14,18,27,0.5)_100%)] pointer-events-none" />
+        {/* Lightened Gradient Overlay for Maximum Brightness */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B]/90 via-[#0E121B]/20 to-transparent pointer-events-none" />
       </div>
 
       {/* Main Hero Overlay Content */}

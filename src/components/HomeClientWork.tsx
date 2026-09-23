@@ -37,8 +37,8 @@ export default function HomeClientWork() {
       title: "Garbage Boy and Trash Can",
       client: "CARTOON NETWORK",
       format: "ANIMATED SERIES",
-      headline: "Light-Hearted Family Animated Series for Global Audiences",
-      description: "We produced an engaging, funny, and visually vibrant animated series following the wild superhero antics of Garbage Boy and Trash Can for Cartoon Network.",
+      headline: "Garbage Boy and Trash Can",
+      description: "Light hearted family series",
       poster: "/garbage_boy.webp",
       bgColor: "bg-[#9B4100]", // Warm Sienna Amber
       borderColor: "border-[#B24B00]",
@@ -50,8 +50,8 @@ export default function HomeClientWork() {
       title: "Adventures of Titi",
       client: "TANGERINE AFRICA",
       format: "EXPLAINER SERIES",
-      headline: "Making Life Insurance Fun & Effortless to Understand",
-      description: "A series to make life insurance easy to understand and fun to watch, turning complex financial literacy into engaging character-driven animated stories.",
+      headline: "Adventures of Titi",
+      description: "A series to make life insurance easy to understand and fun to watch",
       poster: "/tangerine.png",
       bgColor: "bg-[#007A99]", // Deep Teal Cyan
       borderColor: "border-[#008DB0]",
@@ -60,12 +60,12 @@ export default function HomeClientWork() {
     },
     {
       num: "03",
-      title: "Dr Majek and The Ghost (DMAG)",
+      title: "Dr Majek and The Ghost",
       client: "RAES",
       format: "PUBLIC HEALTH EDUCATION",
-      headline: "Impactful Education on Female Reproductive Health",
-      description: "A public health education animated series focusing on female reproductive health, breaking taboos through high-quality storytelling and medical clarity.",
-      poster: "/e307b614-4433-4f8a-8ec1-063b3c05e3a5.png",
+      headline: "Dr Majek and The Ghost",
+      description: "A public health education series about female reproductive health",
+      poster: "/majss.jpg.jpeg",
       bgColor: "bg-[#55109A]", // Deep Royal Purple
       borderColor: "border-[#6714B9]",
       stickyOffset: "top-24 sm:top-36",
@@ -145,7 +145,7 @@ export default function HomeClientWork() {
             href="/work"
             className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#0E121B] text-xs font-bold uppercase tracking-wider text-white bg-[#0E121B] hover:bg-[#1A2232] transition-all duration-300 shadow-2xl hover:scale-105"
           >
-            <span>See More Work</span>
+            <span>See More</span>
             <span className="text-sm">→</span>
           </Link>
         </ScrollFadeItem>

@@ -9,6 +9,7 @@ export default function TrustedByLogos() {
     { name: "Sesame Street", src: "/logos/sessss-1024x662.png" },
     { name: "Tangerine Africa", src: "/logos/tange.png" },
     { name: "UNDP", src: "/logos/undpppp-1024x662.png" },
+    { name: "RAES", src: "/logos/raes.png" },
     { name: "Microsoft & Partners", src: "/logos/Cn-logog-2-1024x662.png" },
   ];
 
@@ -22,7 +23,7 @@ export default function TrustedByLogos() {
 
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
         <p className="text-xs uppercase tracking-widest text-[#0E121B]/50 font-semibold font-mono">
-          Trusted by Global Networks, Brands & Organizations
+          Trusted by
         </p>
       </div>
 

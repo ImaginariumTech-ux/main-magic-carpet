@@ -6,6 +6,7 @@ import ContactModal from "@/components/ContactModal";
 import Footer from "@/components/Footer";
 import IPTheaterModal from "@/components/IPTheaterModal";
 import { IPItem } from "@/components/IPContentRail";
+import Link from "next/link";
 
 export interface ServiceCapability {
   id: string;
@@ -100,264 +101,191 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
   };
 
   return (
-    <main className="relative min-h-screen bg-black text-white selection:bg-yellow-400 selection:text-black">
-      {/* Navigation Header */}
+    <main className="relative min-h-screen bg-white text-[#0E121B] selection:bg-[#0E121B] selection:text-white">
+      {/* Header Navigation */}
       <Navbar onOpenContact={() => setContactOpen(true)} />
 
-      {/* Hero Billboard Spotlight Section */}
-      <section className="relative w-full min-h-[85vh] flex items-end pb-12 sm:pb-16 pt-36 sm:pt-40 lg:pt-44 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10 group">
-        {/* Background Image / Ambient Backdrop */}
-        <div className="absolute inset-0 z-0 transition-opacity duration-700">
+      {/* Hero Visual Background Banner (Full Width) */}
+      <section className="relative w-full min-h-[85vh] flex flex-col justify-end pb-14 sm:pb-24 pt-32 sm:pt-44 lg:pt-48 overflow-hidden border-b border-[#0E121B]/10">
+        {/* Cover Image */}
+        <div className="absolute inset-0 z-0">
           <img
             src={data.heroBackdrop}
             alt={data.title}
-            className="w-full h-full object-cover filter contrast-110 saturate-125 scale-105 animate-hero-fade"
+            className="w-full h-full object-cover filter contrast-105 saturate-110"
           />
-
-          {/* Cinematic Gradient Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent w-full md:w-3/4 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
+          {/* Subtle Ambient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15 pointer-events-none" />
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 max-w-4xl space-y-5 sm:space-y-6 animate-hero-fade pt-4 sm:pt-8 w-full">
-          {/* Service Spotlight Tag */}
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="px-3 py-1 rounded-md bg-yellow-400 text-black text-xs font-extrabold tracking-widest uppercase shadow-lg">
-              {data.badge}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white">
-              STUDIO CAPABILITY
-            </span>
-            <span className="text-xs font-mono text-yellow-400 font-bold">★ GLOBAL BROADCAST QUALITY</span>
+        {/* Inset Content Overlay */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+          <div className="max-w-3xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono font-semibold uppercase tracking-widest text-white shadow-xl">
+              <span>{data.badge}</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.08] drop-shadow-2xl">
+              {data.title.includes(" ") ? (
+                <>
+                  {data.title.substring(0, data.title.lastIndexOf(" "))}{" "}
+                  <em className="font-serif-accent italic text-white">
+                    {data.title.split(" ").pop()}
+                  </em>
+                </>
+              ) : (
+                data.title
+              )}
+            </h1>
+
+            <p className="text-base sm:text-xl text-white/95 font-medium leading-relaxed max-w-2xl drop-shadow-lg">
+              {data.logline}
+            </p>
           </div>
-
-          {/* Title */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none text-white drop-shadow-2xl">
-            {data.title}
-          </h1>
-
-          {/* Logline */}
-          <p className="text-lg sm:text-xl text-white/90 font-light leading-relaxed max-w-2xl drop-shadow-md">
-            {data.logline}
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button
-              data-cal-namespace="30min"
-              data-cal-link="magic-carpet-ywfdx8/30min"
-              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-              className="flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-extrabold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all duration-300 shadow-2xl hover:scale-105"
-            >
-              <span>Book a Discovery Call</span>
-              <span className="text-xs">→</span>
-            </button>
-
-            <button
-              onClick={() => handleOpenReel()}
-              className="flex items-center gap-3 px-8 py-4 rounded-full bg-white/20 backdrop-blur-md border border-white/30 hover:border-white text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/30 transition-all duration-300"
-            >
-              <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <span>Watch Service Reel</span>
-            </button>
-          </div>
-
-          {/* Stats Bar
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-white/15 max-w-2xl">
-            {data.stats.map((stat, idx) => (
-              <div key={idx}>
-                <div className="text-2xl sm:text-3xl font-extrabold text-yellow-400 font-mono">{stat.value}</div>
-                <div className="text-xs text-white/60 font-medium uppercase tracking-wider mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div> */}
         </div>
       </section>
 
       {/* Capabilities Section Header */}
-      <section className="pt-16 md:pt-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-8">
-          <div>
-            <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-              <span>Specialized Capabilities</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-light text-white tracking-tight">{data.capabilitiesTitle}</h2>
+      <section className="pt-20 pb-12 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#0E121B]/10 pb-8">
+          <div className="space-y-2">
+            <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
+              FEATURED PROJECT SHOWCASES
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-light text-[#0E121B] tracking-tight">
+              Specialized <em className="font-serif-accent italic text-[#0E121B]">Capabilities</em>
+            </h2>
           </div>
-          <p className="text-sm text-white/50 max-w-md font-light leading-relaxed">{data.capabilitiesSubtitle}</p>
+          <p className="text-sm sm:text-base text-[#0E121B]/70 max-w-md font-light leading-relaxed">
+            {data.capabilitiesSubtitle}
+          </p>
         </div>
       </section>
 
-      {/* 2-Column Split Capabilities List (Left: Image/Video, Right: Header & Body Text Details) */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto space-y-16 border-b border-white/10">
+      {/* Capabilities Showcase Cards */}
+      <section className="pb-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto space-y-12">
         {data.capabilities.map((cap) => (
           <div
             key={cap.id}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/15 backdrop-blur-md hover:border-yellow-400/40 transition-all duration-500 shadow-2xl"
+            className="bg-[#090B0F] rounded-[36px] sm:rounded-[48px] p-6 sm:p-10 lg:p-12 text-white border border-white/10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
           >
-            {/* Left Column: Image / Video Media Container */}
+            {/* Left Column: Video/Image Media Card */}
             <div className="lg:col-span-7 relative group">
               <div
-                className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-neutral-900 border border-white/15 shadow-2xl cursor-pointer"
+                className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden bg-zinc-900 border border-white/20 shadow-2xl cursor-pointer"
                 onClick={() => handleOpenReel(cap)}
               >
                 <img
                   src={cap.thumbnail}
                   alt={cap.title}
-                  className="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-700"
                 />
 
-                {/* Dark Vignette Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                {/* Top Badge */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-xs font-semibold text-yellow-400 uppercase tracking-wider font-mono">
+                  <span className="px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-white uppercase tracking-wider">
                     {cap.category}
                   </span>
                 </div>
 
-                {/* Play Video Trigger Overlay */}
+                {/* Play Button Trigger */}
                 <div className="absolute inset-0 z-20 flex items-center justify-center">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-yellow-400 text-black flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white text-[#0E121B] flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
                     <svg className="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-white/70 font-mono">
-                  <span>Demo Video / Reel</span>
-                  <span className="text-yellow-400">Click to Play ↗</span>
+                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between text-xs text-white/80 font-mono">
+                  <span>Click to watch demo</span>
+                  <span>Play Showcase ↗</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Header & Body Text Details */}
-            <div className="lg:col-span-5 space-y-5">
-              {/* Category Subtitle */}
-              <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                <span>{cap.category}</span>
+            {/* Right Column: Title & Text Specifications */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-mono font-semibold">
+                {cap.category}
               </div>
 
-              {/* Header Text */}
-              <h3 className="text-3xl sm:text-4xl font-light text-white tracking-tight leading-snug">
+              <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-snug">
                 {cap.title}
               </h3>
 
-              {/* Body Text */}
-              <p className="text-base text-white/80 font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
                 {cap.description}
               </p>
-
-              {/* Key Deliverables & Specifications */}
-              <div className="space-y-2 pt-2">
-                <div className="text-xs uppercase tracking-wider text-white/40 font-mono">Deliverables & Specifications</div>
-                <div className="flex flex-wrap gap-2">
-                  {cap.deliverables.map((item, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/80"
-                    >
-                      ✓ {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={() => handleOpenReel(cap)}
-                  className="flex items-center gap-3 px-6 py-3 rounded-full bg-yellow-400 text-black font-extrabold text-xs uppercase tracking-wider hover:bg-white transition-all duration-300 shadow-xl"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span>Watch Demo Video</span>
-                </button>
-
-                <button
-                  data-cal-namespace="30min"
-                  data-cal-link="magic-carpet-ywfdx8/30min"
-                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                  className="px-6 py-3 rounded-full bg-white/10 border border-white/20 text-xs font-semibold uppercase tracking-wider text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  Book Service Call
-                </button>
-              </div>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Production Process & Workflow */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-b border-white/10">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="text-xs uppercase tracking-widest text-yellow-400 font-semibold flex items-center justify-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-            <span>Studio Production Pipeline</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-light text-white tracking-tight">{data.processTitle}</h2>
-          <p className="text-base text-white/60 font-light">{data.processSubtitle}</p>
+      {/* Production Process Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#0E121B]/10">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
+            STUDIO WORKFLOW
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-light text-[#0E121B] tracking-tight">
+            Production <em className="font-serif-accent italic text-[#0E121B]">Pipeline</em>
+          </h2>
+          <p className="text-sm sm:text-base text-[#0E121B]/70 font-light">
+            {data.processSubtitle}
+          </p>
         </div>
 
-        {/* 4-Step Horizontal Process Grid */}
+        {/* 4-Step Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {data.processSteps.map((step, idx) => (
             <div
               key={idx}
-              className="relative bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1 space-y-4"
+              className="bg-slate-50/80 border border-slate-200/80 rounded-3xl p-8 hover:border-[#0E121B] hover:shadow-xl transition-all duration-300 space-y-4"
             >
               <div className="flex items-center justify-between">
-                <span className="text-3xl font-extrabold text-yellow-400 font-mono">{step.step}</span>
-                <span className="w-2 h-2 rounded-full bg-yellow-400/50" />
+                <span className="font-mono text-xs font-bold text-white bg-[#0E121B] px-3.5 py-1 rounded-full">
+                  {step.step}
+                </span>
+                <span className="w-2 h-2 rounded-full bg-[#0E121B]/40" />
               </div>
-              <h3 className="text-lg font-semibold text-white">{step.title}</h3>
-              <p className="text-xs text-white/60 font-light leading-relaxed">{step.description}</p>
+              <h3 className="text-xl font-bold text-[#0E121B] tracking-tight">{step.title}</h3>
+              <p className="text-xs sm:text-sm text-[#0E121B]/70 font-light leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Direct Call To Action */}
-      <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-12 max-w-5xl mx-auto text-center space-y-8">
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
-          Ready to produce your next <br />
-          <em className="font-serif-accent text-yellow-400 not-italic italic">{data.title}?</em>
-        </h2>
-        <p className="text-lg text-white/70 max-w-2xl mx-auto font-light">
-          Let’s discuss your vision, creative scope, and timeline. Book a discovery call with our production directors today.
-        </p>
+      {/* Direct CTA Banner */}
+      <section className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto my-8">
+        <div className="bg-[#090B0F] rounded-[36px] sm:rounded-[48px] p-8 sm:p-16 text-center text-white border border-white/10 shadow-2xl space-y-8 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto space-y-4 relative z-10">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
+              Ready to produce your next <br className="hidden sm:inline" />
+              <em className="font-serif-accent italic text-white/95">{data.title}?</em>
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
+              Let's discuss your creative scope, production pipeline, and timeline. Connect with our production team today.
+            </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <button
-            data-cal-namespace="30min"
-            data-cal-link="magic-carpet-ywfdx8/30min"
-            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-            className="px-8 py-4 rounded-full bg-yellow-400 text-black font-extrabold text-sm uppercase tracking-wider hover:bg-white transition-all duration-300 shadow-2xl hover:scale-105"
-          >
-            Book a Discovery Call
-          </button>
-
-          <button
-            onClick={() => setContactOpen(true)}
-            className="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:border-white text-sm font-semibold uppercase tracking-wider text-white hover:bg-white/20 transition-all duration-300"
-          >
-            Send Inquiry Message
-          </button>
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
+              <button
+                onClick={() => setContactOpen(true)}
+                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-white text-[#0E121B] font-extrabold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-2xl hover:scale-105"
+              >
+                <span>Talk to our team</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />
 
-      {/* Theater Video Modal */}
+      {/* Theater Video Player Modal */}
       <IPTheaterModal
         ip={activeVideo}
         onClose={() => setActiveVideo(null)}
