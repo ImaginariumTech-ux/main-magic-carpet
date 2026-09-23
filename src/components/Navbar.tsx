@@ -103,14 +103,14 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
 
       {/* Full-Screen Full-Width Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 w-screen h-screen bg-[#0E121B]/98 backdrop-blur-3xl z-[100] flex flex-col justify-between p-6 sm:p-8 animate-hero-fade text-white overflow-y-auto">
+        <div className="md:hidden fixed inset-0 w-screen h-[100dvh] bg-[#0E121B]/98 backdrop-blur-3xl z-[100] flex flex-col justify-between p-6 sm:p-8 pb-20 sm:pb-24 animate-hero-fade text-white overflow-y-auto">
           {/* Header Row Inside Full Screen Menu */}
-          <div className="flex items-center justify-between pb-6 border-b border-white/10">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10 shrink-0">
             <Link href="/" onClick={() => setMobileMenuOpen(false)}>
               <img
                 src="/cropped-hhdfhdfh.png"
                 alt="Magic Carpet Studios Logo"
-                className="h-16 w-auto object-contain filter drop-shadow-md"
+                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-md"
               />
             </Link>
 
@@ -124,15 +124,15 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
           </div>
 
           {/* Navigation Links */}
-          <div className="py-8 space-y-6 flex-1 flex flex-col justify-center">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-semibold mb-2">
+          <div className="py-6 space-y-5 flex-1 flex flex-col justify-center">
+            <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 font-semibold mb-1">
               NAVIGATION
             </div>
 
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-3xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
+              className="block text-2xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
             >
               HOME
             </Link>
@@ -140,7 +140,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             <Link
               href="/work"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-3xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
+              className="block text-2xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
             >
               Our WORK
             </Link>
@@ -148,7 +148,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             <Link
               href="/services"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-3xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
+              className="block text-2xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
             >
               SERVICES
             </Link>
@@ -156,24 +156,24 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-3xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
+              className="block text-2xl sm:text-4xl font-light uppercase tracking-wider text-white hover:text-slate-300 hover:translate-x-2 transition-all"
             >
               ABOUT
             </Link>
           </div>
 
-          {/* Bottom Call to Action & Contact Info */}
-          <div className="pt-6 border-t border-white/10 space-y-4">
+          {/* Bottom Call to Action & Contact Info (Elevated with extra bottom margin) */}
+          <div className="pt-5 pb-6 border-t border-white/10 space-y-3 shrink-0 mb-4">
             <Link
               href="/work-with-us"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-3 w-full py-4 rounded-full bg-white text-[#0E121B] font-extrabold text-sm uppercase tracking-wider shadow-2xl hover:bg-slate-100 transition-all"
+              className="flex items-center justify-center gap-3 w-full py-4 rounded-full bg-white text-[#0E121B] font-extrabold text-sm uppercase tracking-wider shadow-2xl hover:bg-slate-100 active:scale-98 transition-all"
             >
               <span>WORK WITH US</span>
               <span>→</span>
             </Link>
 
-            <div className="text-center text-xs font-mono text-slate-400 pt-2">
+            <div className="text-center text-xs font-mono text-slate-400 pt-1">
               hello@magiccarpet.studio • Lagos, Nigeria
             </div>
           </div>
