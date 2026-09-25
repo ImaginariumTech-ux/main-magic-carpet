@@ -1,201 +1,168 @@
 "use client";
 
-import { useState } from "react";
-
 export interface AwardItem {
-  number: string;
+  id?: string;
+  number?: string;
   title: string;
+  fullText: string;
   event: string;
-  project: string;
+  project?: string;
   year: string;
-  image: string;
+  category?: string;
 }
 
 const defaultAwards: AwardItem[] = [
   {
-    number: "ONE",
-    title: "Best Animated Short Film",
-    event: "African International Film Festival (AFRIFF)",
-    project: "Sip",
-    year: "2024",
-    image: "/sip_poster.jpg",
+    title: "UN Innovation Challenge for the Sahel",
+    fullText: "Winner of the United Nations Innovation Challenge for the Sahel 2022",
+    event: "United Nations Innovation Challenge",
+    project: "Sahel Innovation",
+    year: "2022",
+    category: "WINNER",
   },
   {
-    number: "TWO",
-    title: "Official Selection & Pitch Finalist",
-    event: "Annecy International Animated Film Festival",
-    project: "Legends of Bulan",
-    year: "2024",
-    image: "/akousa.png",
+    title: "Best African Animation Hourglass Award",
+    fullText: 'Winner International Film Festival (RTF 2019) Best African animation hourglass awards for short film "Meet the Igwes"',
+    event: "Real Time Film Festival (RTF 2019)",
+    project: "Meet the Igwes",
+    year: "2019",
+    category: "WINNER",
   },
   {
-    number: "THREE",
-    title: "Excellence in Animation Production",
-    event: "Creative Industry Awards EMEA",
-    project: "Garbage Boy and Trash Can",
+    title: "Africa Film for Impact Festival Award",
+    fullText: 'Winner Africa Film for Impact Festival Award (Dear Diary short film subtitled "The Right Decision") 2020',
+    event: "Africa Film for Impact Festival",
+    project: "Dear Diary: The Right Decision",
+    year: "2020",
+    category: "WINNER",
+  },
+  {
+    title: "Best Animation In Africa",
+    fullText: 'Best animation In Africa CANEX 2023 "Super Dad"',
+    event: "CANEX 2023",
+    project: "Super Dad",
     year: "2023",
-    image: "/garbage_boy.webp",
+    category: "WINNER",
   },
   {
-    number: "FOUR",
-    title: "Public Health Education Excellence",
-    event: "International Health & Media Forum",
-    project: "Dr Majek and The Ghost",
+    title: "Top 100 Fastest Growing SMEs in Nigeria",
+    fullText: "Winner Business Day's Top 100 Fastest Growing SMEs in Nigeria award.",
+    event: "Business Day SME Awards",
+    project: "Magic Carpet Studios",
     year: "2023",
-    image: "/majss.jpg.jpeg",
+    category: "WINNER",
   },
 ];
 
-export default function AwardsSection() {
-  const [activeIdx, setActiveIdx] = useState<number>(0);
-
+function AwardLaurelCard({ item }: { item: AwardItem }) {
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto my-6 sm:my-8">
-      {/* Container with sleek dark aesthetic matching the reference image */}
-      <div className="bg-[#090B0F] rounded-[32px] sm:rounded-[48px] p-6 sm:p-14 lg:p-16 text-white border border-white/10 shadow-2xl relative overflow-hidden">
-        
-        {/* Top Tag Pill */}
-        <div className="mb-4 sm:mb-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#161B24] border border-white/10 text-[11px] font-mono font-semibold uppercase tracking-widest text-slate-300 shadow-inner">
-            AWARDS
+    <div className="flex-shrink-0 w-[310px] sm:w-[370px] bg-slate-50/95 border border-slate-200/90 rounded-[32px] p-6 sm:p-8 flex flex-col items-center justify-between text-center space-y-5 shadow-lg hover:shadow-2xl hover:border-[#062a82]/40 hover:-translate-y-1 transition-all duration-500 group">
+      {/* 5-Star Header */}
+      <div className="flex items-center gap-1.5 text-amber-400 text-sm">
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+        <span>★</span>
+      </div>
+
+      {/* Golden Laurel Wreath Emblem & Award Title */}
+      <div className="relative w-full flex items-center justify-between px-1">
+        {/* Left Golden Laurel Branch SVG */}
+        <svg
+          className="w-8 h-16 text-amber-500/90 shrink-0 transition-transform duration-500 group-hover:-translate-x-1"
+          viewBox="0 0 32 60"
+          fill="currentColor"
+        >
+          <path
+            d="M20 6C14 12 8 20 8 30C8 40 13 48 20 54"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path d="M20 8C13 11 7 17 5 24C10 24 16 19 20 8Z" />
+          <path d="M20 22C12 24 6 30 5 36C10 36 16 31 20 22Z" />
+          <path d="M20 34C12 36 7 43 6 49C11 48 17 42 20 34Z" />
+        </svg>
+
+        {/* Center Content */}
+        <div className="px-2 space-y-2 z-10 flex-1">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-amber-600 uppercase bg-amber-500/10 px-3 py-1 rounded-full inline-block border border-amber-500/20">
+            {item.category || "WINNER"}
           </span>
+          <h3 className="text-base sm:text-lg font-bold text-[#0E121B] tracking-tight leading-snug">
+            {item.title}
+          </h3>
+          <p className="text-xs text-[#0E121B]/80 font-medium leading-relaxed italic">
+            "{item.fullText}"
+          </p>
         </div>
 
-        {/* Section Headline */}
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mb-3 sm:mb-4 leading-tight">
-          Awards for <em className="font-serif-accent italic text-white/90">our work</em>
-        </h2>
+        {/* Right Golden Laurel Branch SVG */}
+        <svg
+          className="w-8 h-16 text-amber-500/90 shrink-0 transform scale-x-[-1] transition-transform duration-500 group-hover:translate-x-1"
+          viewBox="0 0 32 60"
+          fill="currentColor"
+        >
+          <path
+            d="M20 6C14 12 8 20 8 30C8 40 13 48 20 54"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <path d="M20 8C13 11 7 17 5 24C10 24 16 19 20 8Z" />
+          <path d="M20 22C12 24 6 30 5 36C10 36 16 31 20 22Z" />
+          <path d="M20 34C12 36 7 43 6 49C11 48 17 42 20 34Z" />
+        </svg>
+      </div>
 
-        {/* Subtitle Description */}
-        <p className="text-zinc-400 text-sm sm:text-base font-light max-w-2xl leading-relaxed mb-8 sm:mb-16">
-          Selected honors for feature animation, short films, and original IPs — storytelling, craft, and visual innovation.
+      {/* Festival Event & Details under it */}
+      <div className="w-full pt-4 border-t border-slate-200/80 space-y-1.5">
+        <p className="text-xs sm:text-sm font-semibold text-[#0E121B]/90 leading-snug">
+          {item.event}
         </p>
 
-        {/* Awards Rows Table Container */}
-        <div className="relative w-full border-b border-zinc-800/90">
-          
-          {/* Central Floating Preview Image (Desktop Only) */}
-          <div
-            className="hidden lg:block absolute left-1/2 -translate-x-1/2 pointer-events-none z-30 transition-all duration-500 ease-out"
-            style={{
-              top: `${((activeIdx >= 0 ? activeIdx : 0) + 0.5) * (100 / defaultAwards.length)}%`,
-              transform: 'translate(-50%, -50%)',
-            }}
-          >
-            <div className="relative w-60 h-44 rounded-2xl overflow-hidden shadow-[0_25px_60px_-12px_rgba(0,0,0,0.95)] border border-white/20 bg-zinc-900 group">
-              <img
-                src={defaultAwards[activeIdx >= 0 ? activeIdx : 0]?.image}
-                alt={defaultAwards[activeIdx >= 0 ? activeIdx : 0]?.title}
-                className="w-full h-full object-cover filter contrast-105 transition-transform duration-700 scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-white font-semibold">
-                <span className="truncate">{defaultAwards[activeIdx >= 0 ? activeIdx : 0]?.project}</span>
-                <span className="text-slate-300">{defaultAwards[activeIdx >= 0 ? activeIdx : 0]?.year}</span>
-              </div>
-            </div>
-          </div>
+        <div className="flex items-center justify-center gap-2 text-[11px] font-mono font-semibold text-[#062a82]">
+          {item.project && <span>{item.project}</span>}
+          {item.project && <span>•</span>}
+          <span>{item.year}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-          {/* Award Items List */}
-          {defaultAwards.map((item, idx) => {
-            const isActive = activeIdx === idx;
-            return (
-              <div
-                key={idx}
-                onMouseEnter={() => setActiveIdx(idx)}
-                onClick={() => setActiveIdx((prev) => (prev === idx ? -1 : idx))}
-                className={`group relative border-t border-zinc-800/90 cursor-pointer transition-colors duration-300 z-10 ${
-                  isActive ? "bg-white/[0.04]" : "hover:bg-white/[0.02]"
-                }`}
-              >
-                {/* Header Row */}
-                <div className="py-5 sm:py-8 px-3 sm:px-6 flex items-start sm:items-center justify-between gap-4">
-                  {/* Left: Number & Title */}
-                  <div className="flex items-start sm:items-center space-x-4 sm:space-x-10 min-w-0 flex-1">
-                    <span
-                      className={`font-mono text-xs sm:text-sm font-semibold tracking-widest uppercase transition-colors duration-300 shrink-0 pt-0.5 sm:pt-0 ${
-                        isActive ? "text-white" : "text-zinc-500"
-                      }`}
-                    >
-                      {item.number}
-                    </span>
+export default function AwardsSection() {
+  // Multiply default awards to ensure smooth infinite marquee scrolling
+  const marqueeList = [...defaultAwards, ...defaultAwards, ...defaultAwards];
 
-                    <div className="space-y-1 min-w-0">
-                      <h3
-                        className={`text-base sm:text-xl font-bold tracking-tight transition-all duration-300 ${
-                          isActive ? "text-white sm:translate-x-1" : "text-zinc-200"
-                        }`}
-                      >
-                        {item.title}
-                      </h3>
-                      {/* Mobile Event Name Subtitle */}
-                      <p className="text-xs text-zinc-400 font-mono sm:hidden">
-                        {item.event}
-                      </p>
-                    </div>
-                  </div>
+  return (
+    <section className="py-16 sm:py-24 bg-white border-t border-[#0E121B]/10 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mb-12 space-y-3 text-center sm:text-left">
+        {/* <span className="text-xs uppercase tracking-widest text-[#062a82] font-semibold font-mono block">
+          RECOGNITION & HONORS
+        </span> */}
+        <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#0E121B]">
+          Awards for <em className="font-serif-accent italic text-[#062a82]">our work</em>
+        </h2>
+        {/* <p className="text-[#0E121B]/70 text-base max-w-2xl">
+          Selected international honors, film festival awards, and industry recognitions across animation and original IP storytelling.
+        </p> */}
+      </div>
 
-                  {/* Right: Desktop Organization/Event Name + Mobile Chevron */}
-                  <div className="shrink-0 flex items-center gap-3 text-right">
-                    <span
-                      className={`hidden sm:inline-block font-mono text-xs sm:text-sm transition-colors duration-300 font-light ${
-                        isActive ? "text-zinc-200" : "text-zinc-400"
-                      }`}
-                    >
-                      {item.event}
-                    </span>
+      {/* Marquee Track Container with Slower Scroll (animate-marquee-slow) */}
+      <div className="relative w-full overflow-hidden py-4 select-none group">
+        {/* Left & Right Ambient Fading Gradient Overlays */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-                    {/* Mobile Expand Toggle Arrow */}
-                    <div
-                      className={`lg:hidden w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-300 ${
-                        isActive
-                          ? "bg-white text-[#0E121B] border-white rotate-180"
-                          : "border-white/20 text-zinc-400"
-                      }`}
-                    >
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile Expandable Accordion Body (< lg) */}
-                {isActive && (
-                  <div className="lg:hidden px-3 pb-6 pt-1 space-y-4 animate-hero-fade">
-                    {/* Poster Card */}
-                    <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-zinc-900">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover filter contrast-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
-                        <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-white font-bold border border-white/20">
-                          {item.project}
-                        </span>
-                        <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white font-semibold border border-white/20">
-                          {item.year}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Details Badges */}
-                    <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
-                      <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                        Awarding Body / Festival
-                      </div>
-                      <div className="text-sm font-semibold text-white">
-                        {item.event}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+        {/* Continuous Slower Marquee */}
+        <div className="flex gap-6 animate-marquee-slow">
+          {marqueeList.map((item, idx) => (
+            <AwardLaurelCard key={`${item.title}-${idx}`} item={item} />
+          ))}
         </div>
       </div>
     </section>

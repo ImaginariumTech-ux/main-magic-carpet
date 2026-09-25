@@ -40,8 +40,6 @@ export default function HomeClientWork() {
       headline: "Garbage Boy and Trash Can",
       description: "Light hearted family series",
       poster: "/garbage_boy.webp",
-      bgColor: "bg-[#9B4100]", // Warm Sienna Amber
-      borderColor: "border-[#B24B00]",
       stickyOffset: "top-16 sm:top-20",
       zIndex: "z-10",
     },
@@ -53,8 +51,6 @@ export default function HomeClientWork() {
       headline: "Adventures of Titi",
       description: "A series to make life insurance easy to understand and fun to watch",
       poster: "/tangerine.png",
-      bgColor: "bg-[#007A99]", // Deep Teal Cyan
-      borderColor: "border-[#008DB0]",
       stickyOffset: "top-20 sm:top-28",
       zIndex: "z-20",
     },
@@ -66,15 +62,13 @@ export default function HomeClientWork() {
       headline: "Dr Majek and The Ghost",
       description: "A public health education series about female reproductive health",
       poster: "/majss.jpg.jpeg",
-      bgColor: "bg-[#55109A]", // Deep Royal Purple
-      borderColor: "border-[#6714B9]",
       stickyOffset: "top-24 sm:top-36",
       zIndex: "z-30",
     },
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#0E121B]/10 bg-white text-[#0E121B]">
+    <section className="pt-3 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#0E121B]/10 bg-white text-[#0E121B]">
       {/* Centered Scroll Header with Fade Effect */}
       <ScrollFadeItem className="text-center max-w-3xl mx-auto mb-20 space-y-4">
         {/* <span className="text-xs font-mono font-semibold uppercase tracking-widest text-white bg-[#0E121B] px-4 py-1.5 rounded-full inline-block">
@@ -82,47 +76,47 @@ export default function HomeClientWork() {
         </span> */}
         <h2 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-[#0E121B] leading-[1.1]">
           We&apos;ve helped bring <br />
-          <em className="font-serif-accent italic text-[#0E121B]">big ideas to life.</em>
+          <em className="font-serif-accent italic text-[#062a82]">big ideas to life.</em>
         </h2>
       </ScrollFadeItem>
 
       {/* Sticky Stacking Cards Container */}
-      <div className="relative space-y-12 sm:space-y-16 pb-12">
+      <div className="relative space-y-12 sm:space-y-16">
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className={`sticky ${project.stickyOffset} ${project.zIndex} ${project.bgColor} border ${project.borderColor} rounded-[36px] p-6 sm:p-10 lg:p-12 text-white shadow-2xl transition-transform duration-500 hover:scale-[1.01]`}
+            className={`sticky ${project.stickyOffset} ${project.zIndex} bg-white border-2 border-[#062a82] rounded-[36px] p-6 sm:p-10 lg:p-12 text-[#0E121B] shadow-2xl transition-transform duration-500 hover:scale-[1.01]`}
           >
             <ScrollFadeItem>
               <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
                 {/* Left Column: Details */}
                 <div className="flex-1 space-y-5">
                   {/* Number */}
-                  <div className="text-5xl sm:text-6xl font-bold font-sans tracking-tight text-white/90">
+                  <div className="text-5xl sm:text-6xl font-bold font-sans tracking-tight text-[#062a82]">
                     {project.num}
                   </div>
 
                   {/* Tags */}
-                  <div className="text-xs font-mono font-bold tracking-widest uppercase text-white/80 space-x-3">
+                  <div className="text-xs font-mono font-bold tracking-widest uppercase text-[#062a82] space-x-3">
                     <span>{project.client}</span>
                     <span>•</span>
                     <span>{project.format}</span>
                   </div>
 
                   {/* Headline */}
-                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white">
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#062a82]">
                     {project.headline}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-base sm:text-lg text-white/85 font-light leading-relaxed max-w-xl">
+                  <p className="text-base sm:text-lg font-light leading-relaxed max-w-xl text-[#062a82]">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Right Column: Square Artwork Poster */}
                 <div className="w-full lg:w-[440px] shrink-0">
-                  <div className="relative aspect-square w-full rounded-[28px] overflow-hidden border border-white/20 shadow-2xl group bg-black/20">
+                  <div className="relative aspect-square w-full rounded-[28px] overflow-hidden border border-[#062a82]/20 shadow-2xl group bg-slate-100">
                     <img
                       src={project.poster}
                       alt={project.title}
@@ -138,12 +132,14 @@ export default function HomeClientWork() {
             </ScrollFadeItem>
           </div>
         ))}
+      </div>
 
-        {/* Bottom Section Action Button */}
-        <ScrollFadeItem className="relative z-40 pt-16 text-center">
+      {/* Bottom Section Action Button */}
+      <div className="relative z-40 pt-20 sm:pt-5 pb-16 text-center">
+        <ScrollFadeItem>
           <Link
             href="/work"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#0E121B] text-xs font-bold uppercase tracking-wider text-white bg-[#0E121B] hover:bg-[#1A2232] transition-all duration-300 shadow-2xl hover:scale-105"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-[#0E121B] text-xs font-bold uppercase tracking-wider text-white bg-[#062a82] hover:bg-[#062a82] transition-all duration-300 shadow-2xl hover:scale-105"
           >
             <span>See More</span>
             <span className="text-sm">→</span>

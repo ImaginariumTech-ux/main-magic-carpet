@@ -40,6 +40,11 @@ export default function Hero({ onOpenContact }: HeroProps) {
           loop
           muted
           playsInline
+          onTimeUpdate={(e) => {
+            if (e.currentTarget.currentTime >= 50) {
+              e.currentTarget.currentTime = 0;
+            }
+          }}
           src="https://res.cloudinary.com/dt2vu9jje/video/upload/v1790148975/WhatsApp_Video_2026-09-22_at_13.32.40_l9wo9a.mp4"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none brightness-100 contrast-105"
         />
@@ -49,9 +54,9 @@ export default function Hero({ onOpenContact }: HeroProps) {
 
       {/* Main Hero Overlay Content */}
       <div className="relative z-20 px-4 sm:px-6 lg:px-10 pb-12 sm:pb-16 lg:pb-20 max-w-7xl w-full mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="flex flex-col items-start gap-8 max-w-[820px]">
           {/* Headline & Copy */}
-          <div className="max-w-[820px] space-y-4">
+          <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.08] tracking-tight text-white drop-shadow-2xl">
               <span className="block">We create animated</span>
               <em className={`font-serif-accent font-normal text-sky-200 not-italic italic block mt-1 sm:mt-2 transition-all duration-350 transform ${
@@ -63,7 +68,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
           </div>
 
           {/* Primary CTA */}
-          <div className="shrink-0">
+          <div className="pt-2">
             <Link
               href="/work-with-us"
               className="inline-flex items-center justify-between gap-6 rounded-full bg-white text-[#0E121B] font-extrabold px-8 py-4 text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:bg-slate-100 hover:scale-105"

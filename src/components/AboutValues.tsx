@@ -30,15 +30,15 @@ export default function AboutValues() {
   ];
 
   return (
-    <section id="values" className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#0E121B]/10">
+    <section id="values" className="py-4 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-[#0E121B]/10">
       <div className="space-y-12">
         {/* Section Header */}
         <div className="space-y-3">
-          <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
+          {/* <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
             GUIDING PRINCIPLES
-          </span>
+          </span> */}
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#0E121B]">
-            Our <em className="font-serif-accent italic text-[#0E121B]">Values</em>
+            Our <em className="font-serif-accent italic text-[#062a82]">Values</em>
           </h2>
         </div>
 

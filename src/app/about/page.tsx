@@ -34,7 +34,7 @@ export default function AboutPage() {
       <AboutTeam />
 
       {/* Final CTA Banner */}
-      <section className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto my-8">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto my-8">
         <div className="bg-[#090B0F] rounded-[36px] sm:rounded-[48px] p-8 sm:p-16 text-center text-white border border-white/10 shadow-2xl space-y-8 relative overflow-hidden">
           <div className="max-w-3xl mx-auto space-y-4 relative z-10">
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight">
@@ -48,7 +48,7 @@ export default function AboutPage() {
             <div className="pt-4 flex flex-wrap justify-center gap-4">
               <button
                 onClick={() => setContactOpen(true)}
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-white text-[#0E121B] font-extrabold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-2xl hover:scale-105"
+                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-white text-[#062a82] font-extrabold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-2xl hover:scale-105"
               >
                 <span>Work with us</span>
                 <span>→</span>
@@ -56,7 +56,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <Footer onOpenContact={() => setContactOpen(true)} />

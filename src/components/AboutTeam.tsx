@@ -17,13 +17,13 @@ export default function AboutTeam() {
     },
     {
       id: "cheks",
-      name: "Cheks",
+      name: "Chekwube Okonkwo",
       position: "Head of 2D Animation & Art Director",
       image: "/checksss.jpg",
     },
     {
       id: "duru",
-      name: "Duru",
+      name: "Duru Azubuike",
       position: "Head of 3D Animation & Production Pipeline",
       image: "/durururu.jpg",
     },
@@ -34,11 +34,11 @@ export default function AboutTeam() {
       <div className="space-y-12">
         {/* Header */}
         <div className="space-y-3">
-          <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
+          {/* <span className="text-xs uppercase tracking-widest text-[#0E121B]/60 font-semibold font-mono">
             CREATIVE LEADERSHIP
-          </span>
+          </span> */}
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#0E121B]">
-            Creative <em className="font-serif-accent italic text-[#0E121B]">Team & Leadership</em>
+            Creative <em className="font-serif-accent italic text-[#062a82]">Team & Leadership</em>
           </h2>
         </div>
 

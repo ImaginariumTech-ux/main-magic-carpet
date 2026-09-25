@@ -211,7 +211,7 @@ export default function WorkWithUsPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-4 rounded-full bg-[#0E121B] hover:bg-[#1A2232] text-white font-extrabold uppercase tracking-wider text-sm transition-all duration-300 shadow-xl"
+                className="w-full py-4 rounded-full bg-[#062a82] hover:bg-[#1A2232] text-white font-extrabold uppercase tracking-wider text-sm transition-all duration-300 shadow-xl"
               >
                 SEND
               </button>
@@ -226,9 +226,9 @@ export default function WorkWithUsPage() {
                 data-cal-namespace="30min"
                 data-cal-link="magic-carpet-ywfdx8/30min"
                 data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#0E121B]/20 hover:border-[#0E121B] text-xs font-semibold uppercase tracking-wider text-[#0E121B] hover:bg-[#0E121B] hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#062a82]/20 hover:border-[#062a82] text-xs font-semibold uppercase tracking-wider text-[#062a82] hover:bg-[#062a82] hover:text-white transition-colors"
               >
-                <span>📅 Or Book a 30-minute call</span>
+                <span>📅 Book a 30-minitue call</span>
               </button>
             </div>
           </div>

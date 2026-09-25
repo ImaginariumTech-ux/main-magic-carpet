@@ -76,22 +76,19 @@ export default function IPHeroBillboard({
   };
 
   return (
-    <section className="relative w-full min-h-[85vh] flex flex-col justify-end pb-8 sm:pb-16 pt-28 sm:pt-40 lg:pt-44 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10 group">
-      {/* Background Video (Looping 34s to 42s) */}
+    <section className="relative w-full min-h-[85vh] flex flex-col justify-end pb-8 sm:pb-12 pt-28 sm:pt-40 lg:pt-44 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-white/10 group">
+      {/* Dynamic Background Image changing with current IP */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/dt2vu9jje/video/upload/v1790148975/WhatsApp_Video_2026-09-22_at_13.32.40_l9wo9a.mp4#t=34,42"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover filter contrast-105 saturate-110"
+        <img
+          key={`bg-${currentIp.id}`}
+          src={currentIp.backdrop || currentIp.thumbnail}
+          alt={currentIp.title}
+          className="w-full h-full object-cover object-center filter brightness-90 contrast-105 transition-all duration-700 animate-hero-fade"
         />
 
-        {/* Ambient Gradient Overlays for Maximum Image/Text Visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent w-full md:w-1/2 pointer-events-none" />
+        {/* Ambient Gradient Overlays for Maximum Text Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0E121B] via-[#0E121B]/40 to-[#0E121B]/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0E121B]/80 via-transparent to-transparent w-full md:w-2/3 pointer-events-none" />
       </div>
 
       {/* Main Content Layout Container */}

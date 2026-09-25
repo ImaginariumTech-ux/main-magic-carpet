@@ -16,13 +16,13 @@ export default function TrustedByLogos() {
   const marqueeLogos = [...logoItems, ...logoItems];
 
   return (
-    <section className="bg-white border-y border-[#0E121B]/10 py-12 overflow-hidden relative text-[#0E121B]">
+    <section className="bg-white border-y border-[#0E121B]/10 pt-10 pb-8 sm:pt-12 sm:pb-8 overflow-hidden relative text-[#0E121B]">
       {/* Subtle fade edges for smooth marquee */}
       <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-        <p className="text-xs uppercase tracking-widest text-[#0E121B]/50 font-semibold font-mono">
+        <p className="text-xs uppercase tracking-widest text-[#062a82]/50 font-semibold font-mono">
           Trusted by
         </p>
       </div>

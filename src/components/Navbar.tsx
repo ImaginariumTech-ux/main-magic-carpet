@@ -76,17 +76,15 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               ABOUT
             </Link>
           </li>
+          <li>
+            <Link
+              href="/work-with-us"
+              className="text-white/90 hover:text-white transition-colors py-2"
+            >
+              WORK WITH US
+            </Link>
+          </li>
         </ul>
-
-        {/* Desktop Call To Action */}
-        <div className="hidden md:block">
-          <Link
-            href="/work-with-us"
-            className="px-6 py-2.5 rounded-full border border-white/20 hover:border-[#0E121B] text-xs font-semibold uppercase tracking-wider text-white bg-[#0E121B] hover:bg-[#1A2232] transition-all duration-300 shadow-xl inline-block"
-          >
-            WORK WITH US
-          </Link>
-        </div>
 
         {/* Mobile Hamburger Toggle */}
         <button
