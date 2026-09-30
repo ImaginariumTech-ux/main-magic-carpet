@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ServicePageTemplate, { ServicePageData } from "@/components/ServicePageTemplate";
+
+export const metadata: Metadata = {
+  title: "Brand & Commercial Storytelling",
+  description:
+    "Crafting emotionally resonant brand narratives, commercial campaigns, and viral animated characters for industry pioneers by Magic Carpet Studios.",
+};
 
 const brandStorytellingData: ServicePageData = {
   slug: "brand-storytelling",

@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustedByLogos from "@/components/TrustedByLogos";
@@ -10,11 +9,17 @@ import WhyWorkWithUs from "@/components/WhyWorkWithUs";
 import HowWeWork from "@/components/HowWeWork";
 import Footer from "@/components/Footer";
 
+export const metadata: Metadata = {
+  title: "Magic Carpet Studios — African Animation, VFX & Storytelling Studio",
+  description:
+    "We create animated explainers, commercial brand campaigns, original series, and feature films. A leading African animation studio based in Lagos, Nigeria.",
+};
+
 export default function Home() {
   return (
     <main className="relative min-h-screen  text-white selection:bg-yellow-400 selection:text-black">
       {/* 1. Header Navigation */}
-      <Navbar onOpenContact={() => {}} />
+      <Navbar />
 
       {/* 2. Hero Section */}
       <Hero />

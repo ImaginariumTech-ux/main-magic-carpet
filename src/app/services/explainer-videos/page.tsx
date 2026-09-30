@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ServicePageTemplate, { ServicePageData } from "@/components/ServicePageTemplate";
+
+export const metadata: Metadata = {
+  title: "Explainer Videos & Motion Graphics",
+  description:
+    "Turning complex concepts, corporate vision, and tech platforms into engaging, high-converting 2D and 3D animated explainers by Magic Carpet Studios.",
+};
 
 const explainerData: ServicePageData = {
   slug: "explainer-videos",

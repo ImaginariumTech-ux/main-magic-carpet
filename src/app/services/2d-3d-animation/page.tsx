@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ServicePageTemplate, { ServicePageData } from "@/components/ServicePageTemplate";
+
+export const metadata: Metadata = {
+  title: "Original 2D & 3D IP Animation",
+  description:
+    "World-class 2D and 3D character animation, environment world-building, and cinematic feature & series production from concept to screen by Magic Carpet Studios.",
+};
 
 const animationData: ServicePageData = {
   slug: "2d-3d-animation",

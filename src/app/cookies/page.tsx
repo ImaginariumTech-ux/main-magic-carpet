@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalLayout, { LegalSection } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Website Cookies Policy — Magic Carpet Studios",
+  title: "Website Cookies Policy",
   description:
     "Official Website Cookies Policy for Magic Carpet Studios. Learn what cookies are, why they are used, the categories deployed, and how to manage your cookie preferences.",
   openGraph: {

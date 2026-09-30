@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalLayout, { LegalSection } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Website Privacy Policy — Magic Carpet Studios",
+  title: "Website Privacy Policy",
   description:
     "Official Website Privacy Policy for Magic Carpet Studios. Learn how we collect, use, disclose, store, and protect personal data in compliance with the Nigeria Data Protection Act 2023 (NDPA).",
   openGraph: {

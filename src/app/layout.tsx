@@ -20,8 +20,12 @@ const playfairSerif = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "About Us — Magic Carpet Studios",
-  description: "Magic Carpet Studios is a globally recognized animation production company based in Africa, crafting captivating short films, animated series, and feature-length stories that inspire audiences worldwide.",
+  title: {
+    default: "Magic Carpet Studios — African Animation, VFX & Storytelling Studio",
+    template: "%s — Magic Carpet Studios",
+  },
+  description:
+    "Magic Carpet Studios is a globally recognized animation and storytelling production company based in Lagos, Nigeria, crafting captivating short films, animated series, and commercial campaigns.",
 };
 
 export default function RootLayout({

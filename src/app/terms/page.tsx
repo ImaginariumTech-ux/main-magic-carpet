@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalLayout, { LegalSection } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
-  title: "Website Terms of Use — Magic Carpet Studios",
+  title: "Website Terms of Use",
   description:
     "Official Website Terms of Use for Magic Carpet Studios. Review our terms regarding website access, intellectual property, Create With Us submissions, and dispute resolution.",
   openGraph: {
