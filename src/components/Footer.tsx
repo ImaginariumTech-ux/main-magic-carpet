@@ -54,10 +54,25 @@ export default function Footer({ onOpenContact, showPreFooter = false }: FooterP
       <footer className="bg-white text-[#0E121B] border-t border-[#0E121B]/10">
         <div className="px-4 sm:px-6 lg:px-10 py-16 lg:py-20 max-w-7xl mx-auto">
           {/* Sitemap Navigation */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm">
             <div className="space-y-4">
               <div className="text-xs uppercase tracking-widest text-[#0E121B]/40 font-semibold">Explore</div>
               <ul className="space-y-2.5 text-[#0E121B]/70">
+                <li>
+                  <Link href="/work" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Our Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-[#0E121B] transition-colors font-medium">
+                    About Studio
+                  </Link>
+                </li>
                 <li>
                   <Link href="/work-with-us" className="hover:text-[#0E121B] transition-colors font-medium">
                     Work with us
@@ -69,8 +84,32 @@ export default function Footer({ onOpenContact, showPreFooter = false }: FooterP
                     <span className="text-[11px] text-[#0E121B] font-bold">Learn how to animate</span>
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <div className="text-xs uppercase tracking-widest text-[#0E121B]/40 font-semibold">Legal & Policies</div>
+              <ul className="space-y-2.5 text-[#0E121B]/70">
+                <li>
+                  <Link href="/privacy" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Terms of Use
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookies" className="hover:text-[#0E121B] transition-colors font-medium">
+                    Cookies Policy
+                  </Link>
+                </li>
                 <li className="pt-1"> 
-                  <span className="font-medium text-[#0E121B]/50">For Partnerships:</span> <span className="font-semibold text-[#0E121B]">hello@magiccarpet.studio</span>
+                  <span className="font-medium text-[#0E121B]/50">For Inquiries:</span>{" "}
+                  <a href="mailto:hello@magiccarpet.studio" className="font-semibold text-[#0E121B] hover:underline">
+                    hello@magiccarpet.studio
+                  </a>
                 </li>
               </ul>
             </div>
@@ -81,6 +120,7 @@ export default function Footer({ onOpenContact, showPreFooter = false }: FooterP
                 <li className="font-bold text-[#0E121B]">Lagos, Nigeria</li>
                 <li>Plot 18, Nike Art Gallery Road</li>
                 <li>Ikate, Lekki, Lagos</li>
+                <li className="pt-2 text-[#0E121B]/50">Global Animation & Feature Production</li>
               </ul>
             </div>
 
@@ -110,9 +150,9 @@ export default function Footer({ onOpenContact, showPreFooter = false }: FooterP
           <div className="mt-16 pt-8 border-t border-[#0E121B]/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#0E121B]/50 gap-4">
             <div>© {new Date().getFullYear()} Magic Carpet Studios. All rights reserved. Lagos, Nigeria.</div>
             <div className="flex gap-6">
-              <Link href="/privacy" className="hover:text-[#0E121B]">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-[#0E121B]">Terms of Use</Link>
-              <Link href="/cookies" className="hover:text-[#0E121B]">Cookies</Link>
+              <Link href="/privacy" className="hover:text-[#0E121B] transition-colors font-medium">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#0E121B] transition-colors font-medium">Terms of Use</Link>
+              <Link href="/cookies" className="hover:text-[#0E121B] transition-colors font-medium">Cookies</Link>
             </div>
           </div>
         </div>
