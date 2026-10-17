@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   },
   description:
     "Magic Carpet Studios is a globally recognized animation and storytelling production company based in Lagos, Nigeria, crafting captivating short films, animated series, and commercial campaigns.",
+  icons: {
+    icon: "/cropped-hhdfhdfh.png",
+    shortcut: "/cropped-hhdfhdfh.png",
+    apple: "/cropped-hhdfhdfh.png",
+  },
 };
 
 export default function RootLayout({
